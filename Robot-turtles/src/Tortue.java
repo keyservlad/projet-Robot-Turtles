@@ -2,18 +2,32 @@
 public class Tortue {
 	
 	String color; 
-	int xpos;
-	int ypos;
+	int xPos;
+	int yPos;
 	char direction;
+	
+	char symbol;
+	
 	
 	public Tortue() {
 		
 	}
 	
+	
+	
 	public Tortue(String color) {
 		this.color = color;
-		this.xpos = /*"pos initiale x"*/0;
-		this.ypos = /*"pos initiale y"*/0;
+		
+		this.direction = 'S';
+		
+		setSymbol();
+		
+	}
+	
+	public Tortue(String color, int xPos, int yPos) {
+		this.color = color;
+		this.xPos = /*"pos initiale x"*/0;
+		this.yPos = /*"pos initiale y"*/0;
 		this.direction = /*direction initial*/0;
 		
 	}
@@ -21,22 +35,142 @@ public class Tortue {
 	
 	public void avance() {
 		
-		// verifier l'angle de la tortue et la faire avancer de 1 (soit +/- 1 à y ou x)
-		//this.xpos += 1;
+		// on doit verifier que la position est valide avant de deplacer grace a la fonction deplacementvalide()
+		
+		if (Game.plateau.deplacementValide(this.direction, this.xPos, this.yPos, this.color)) {
+			switch(this.direction) {
+			case 'S':
+				this.yPos += 1;
+				break;
+				
+			case 'N':
+				this.yPos -= 1;
+				break;
+				
+			case 'E':
+				this.xPos += 1;
+				break;
+				
+			case 'W':
+				this.xPos -= 1;
+				break;
+			}
+			
+			Game.plateau.updatePlateau();
+		} else {
+			System.out.println("deplacement invalide");
+		}
+		
+		
 	}
 	
+	
+	
 	public void turnleft() {
-		//modifier la valeur de direction
+		switch(this.direction) {
+		case 'S':
+			this.direction = 'E';
+			break;
+			
+		case 'N':
+			this.direction = 'W';
+			break;
+			
+		case 'E':
+			this.direction = 'N';
+			break;
+			
+		case 'W':
+			this.direction = 'S';
+			break;
+		}
+		
+		Game.plateau.updatePlateau();
 	}
 	
 	public void turnright() {
-		//modifier la valuer de direction
+		switch(this.direction) {
+		case 'S':
+			this.direction = 'W';
+			break;
+			
+		case 'N':
+			this.direction = 'E';
+			break;
+			
+		case 'E':
+			this.direction = 'S';
+			break;
+			
+		case 'W':
+			this.direction = 'N';
+			break;
+		}
+		
+		Game.plateau.updatePlateau();
 	}
 	
-	public void retourAuDebut() {
-		//renvoie à la case initiale et direction initiale
+	
+	
+	public int getxPos() {
+		return this.xPos;
 	}
 	
+	public int getyPos() {
+		return this.yPos;
+	}
 	
+	public void setxPos(int xPos) {
+		this.xPos = xPos;
+	}
+	
+	public void setyPos(int yPos) {
+		this.yPos = yPos;
+	}
+	
+	public void setxy(int x, int y) {
+		this.xPos = x;
+		this.yPos = y;
+	}
+	
+	public String getColor() {
+		return this.color;
+	}
+	
+	public char getSymbol() {
+		return this.symbol;
+	}
+	
+	public void setSymbol() {
+		switch (this.color) {
+		case "Rouge":
+			this.symbol = 'R';
+			break;
+			
+		case "Verte":
+			this.symbol = 'V';
+			break;
+			
+		case "Bleue":
+			this.symbol = 'B';
+			break;
+			
+		case "Jaune":
+			this.symbol = 'J';
+			break;
+		}
+	}
+	
+	public int getIndex(String color) {
+		int i = 0;
+		int j = 0;
+		for (Tortue tortue : Game.tortues) {
+			if (color == tortue.getColor()) {
+				j = i;
+			}
+			i++;
+		}
+		return j;
+	}
 
 }
