@@ -1,7 +1,7 @@
 
 public class Plateau {
 	
-	char[][] plateau = new char[8][8];
+	private char[][] plateau = new char[8][8];
 	
 	
 	

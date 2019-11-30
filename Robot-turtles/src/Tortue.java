@@ -1,16 +1,19 @@
 
 public class Tortue {
 	
-	String color; 
-	int xPos;
-	int yPos;
-	char direction;
+	// ajouter les murs egalement
 	
-	char symbol;
+	private String color; 
+	private int xPos;
+	private int yPos;
+	private char direction;
+	
+	private char symbol;
 	
 	
 	public Tortue() {
-		
+		//creation de listes de cartes 
+		//creation des murs
 	}
 	
 	
@@ -22,6 +25,8 @@ public class Tortue {
 		
 		setSymbol();
 		
+		// creation de listes de cartes
+		
 	}
 	
 	public Tortue(String color, int xPos, int yPos) {
@@ -29,6 +34,9 @@ public class Tortue {
 		this.xPos = /*"pos initiale x"*/0;
 		this.yPos = /*"pos initiale y"*/0;
 		this.direction = /*direction initial*/0;
+		
+		
+		// creation de listes de cartes
 		
 	}
 	
@@ -172,5 +180,8 @@ public class Tortue {
 		}
 		return j;
 	}
+	
+	
+	// fonction deck vide TODO
 
 }
