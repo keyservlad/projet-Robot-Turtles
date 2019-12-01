@@ -53,6 +53,10 @@ public class Tortue {
 		
 	}
 	
+	public HashMap<String, Integer> getInventaire(){
+		return this.inventaire;
+	}
+	
 	
 	
 	

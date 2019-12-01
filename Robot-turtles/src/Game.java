@@ -221,7 +221,14 @@ public class Game {
 			break;
 			
 		case 2:
-			construireMur(tourDuJoueur);
+			
+			if (tortues.get(tourDuJoueur).getInventaire().get("murDeGlace") == 0 && tortues.get(tourDuJoueur).getInventaire().get("murDePierre") == 0) {
+				System.out.println("plus de mur!");
+				
+			}else {
+				construireMur(tourDuJoueur);
+			}
+			
 			break;
 			
 		case 3:
@@ -295,6 +302,80 @@ public class Game {
 	}
 	
 	public void construireMur(int tourDuJoueur) {
+		int x;
+		int y;
+		int j = 0;
+		boolean isRest = false;
+		int choixMur;
+		char symbole = ' ';
+
+		for (String i : tortues.get(tourDuJoueur).getInventaire().keySet()) {
+			if (tortues.get(tourDuJoueur).getInventaire().get(i) != 0) {
+				System.out.println(j + " - " + i);
+				isRest = true;
+			}
+			j++;
+		}
+		
+		if (isRest){
+			do {
+				choixMur = Integer.parseInt(scanner.nextLine()); // faire le choix non pas avec des int mais avec des strings
+			}while (choixMur != 0 && choixMur != 1);  // bug mais osef car il va se barrer avec l'IG
+			
+			symbole = attributionSymbole(choixMur);
+			
+			do {
+				do {
+					System.out.println("entrer l'abscisse : ");
+					x = Integer.parseInt(scanner.nextLine());
+
+				} while (x < 0 || x > 7);
+
+				do {
+					System.out.println("entrer l'ordonnée : ");
+					y = Integer.parseInt(scanner.nextLine());
+				} while (y < 0 || y > 7);
+
+			} while (isMurValide(x, y) == false);
+			
+			plateau.setPlateau(x, y, symbole);
+			switch (choixMur) {
+			case 0:
+				tortues.get(tourDuJoueur).retirerMurDeGlaceInventaire();
+				break;
+				
+			case 1:
+				tortues.get(tourDuJoueur).retirerMurDePierreInventaire();
+			}
+			
+			plateau.updatePlateau();
+			
+			
+		}
+
+		
+
+	}
+	
+	public char attributionSymbole(int choixMur) {
+		switch (choixMur) {
+		case 0:
+			return 'G';
+		case 1:
+			return 'P';
+			
+		}
+		
+		return ' ';
+	}
+	
+	public boolean isMurValide(int x, int y) {
+		
+		if (plateau.getPlateau()[y][x] == ' ') {
+			return true;
+		}
+		
+		return false;
 		
 	}
 	

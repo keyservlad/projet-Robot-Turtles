@@ -71,6 +71,14 @@ public class Plateau {
 		
 	}
 	
+	public char[][] getPlateau(){
+		return plateau;
+	}
+	
+	public void setPlateau(int x, int y, char symbole) {
+		this.plateau[y][x] = symbole;
+	}
+	
 	public void afficherPlateau() {
 		System.out.println("");
 		
