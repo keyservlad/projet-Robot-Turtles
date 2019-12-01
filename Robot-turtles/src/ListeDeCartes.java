@@ -17,7 +17,7 @@ public class ListeDeCartes {
 	
 	
 	public ArrayList<Carte> getCardsList() {
-		return this.getCardsList();
+		return this.cardsList;
 	}
 	
 	public int getTaille() {
@@ -36,6 +36,10 @@ public class ListeDeCartes {
 		this.tailleMax = tailleMax;
 	}
 	
+	public void setCardsList(ArrayList<Carte> cardsList) {
+		this.cardsList = cardsList;
+	}
+	
 	public void ajouterCarte(Carte carte) {
 		
 		//peut etre ajouter une verif que la taille max n'a pas ete atteinte (pour le board et pour la defausse)
@@ -44,7 +48,7 @@ public class ListeDeCartes {
 		setTaille(this.cardsList.size());
 	}
 	
-	public void retirerPremierCarte() {
+	public void retirerPremiereCarte() {
 		if (this.taille != 0) {
 			cardsList.remove(0);
 		}
@@ -60,6 +64,14 @@ public class ListeDeCartes {
 		cardsList.add(carte);
 		
 		return carte;
+	}
+	
+	public void afficheLaListe() {
+		
+		for (Carte carte : this.cardsList) {
+			System.out.print(carte.getType() + " ");
+		}
+		System.out.println();
 	}
 
 }

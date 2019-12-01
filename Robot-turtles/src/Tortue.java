@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Tortue {
 	
@@ -9,6 +10,11 @@ public class Tortue {
 	private char direction;
 	
 	private char symbol;
+	
+	private Hand main;
+	private Defausse defausse;
+	private Deck deck;
+	private Programme programme;
 	
 	
 	public Tortue() {
@@ -25,20 +31,21 @@ public class Tortue {
 		
 		setSymbol();
 		
+		deck = new Deck();
+		main = new Hand();
+		for (int i = 0; i < 5; i++) {
+			pioche();
+		}
+		
+		defausse = new Defausse();
+		
+		programme = new Programme();
+		
 		// creation de listes de cartes
 		
 	}
 	
-	public Tortue(String color, int xPos, int yPos) {
-		this.color = color;
-		this.xPos = /*"pos initiale x"*/0;
-		this.yPos = /*"pos initiale y"*/0;
-		this.direction = /*direction initial*/0;
-		
-		
-		// creation de listes de cartes
-		
-	}
+	
 	
 	
 	public void avance() {
@@ -181,7 +188,59 @@ public class Tortue {
 		return j;
 	}
 	
+	public ListeDeCartes getMain() {
+		return this.main;
+	}
+	
+	public ListeDeCartes getDefausse() {
+		return this.defausse;
+	}
+	
+	public ListeDeCartes getDeck() {
+		return this.deck;
+	}
+	
+	public ListeDeCartes getProgramme() {
+		return this.programme;
+	}
+	
+	public void pioche() {
+		
+		ArrayList<Carte> handList = main.getCardsList();
+		ArrayList<Carte> deckList = deck.getCardsList();
+		
+		handList.add(deckList.get(0));
+		main.setCardsList(handList);
+		
+		
+		deck.retirerPremiereCarte();
+	}
+	
+	public void afficheLaMain() {
+		
+		System.out.print("Votre main : ");
+		this.main.afficheLaListe();
+	}
+	
+	
+	
+	
+	public void envoyerUneCarteAuCimetiere(Carte carte) {
+		this.defausse.ajouterCarte(carte);
+	}
+	
+	public void videLaMain() {
+		this.main.cardsList.clear();
+	}
+	
+	public void afficheLeProgramme() {
+		System.out.print("votre programme : ");
+		this.programme.afficheLaListe();
+	}
+	
+	
 	
 	// fonction deck vide TODO
+	
 
 }

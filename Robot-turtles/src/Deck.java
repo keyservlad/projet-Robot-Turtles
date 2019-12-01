@@ -23,11 +23,7 @@ public class Deck extends ListeDeCartes{
 		
 	}
 	
-	public void pioche() {
-		// TODO
-		// transfert la premiere carte du deck (indice 0) dans la main
-		
-	}
+	
 	
 	public void melangeLeDeck() {
 		Collections.shuffle(this.cardsList);
