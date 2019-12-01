@@ -58,5 +58,18 @@ public class Carte {
 	public void actionCarteLaser(Tortue tortue) {
 		// TODO
 	}
+	
+	public int getIndex(ListeDeCartes list) {
+		int i = 0;
+		for (Carte carte : list.cardsList) {
+			if (carte.type == this.type) {
+				return i;
+			}
+			i++;
+		}
+		
+		
+		return 0;
+	}
 
 }

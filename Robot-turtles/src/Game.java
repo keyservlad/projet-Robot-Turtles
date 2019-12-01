@@ -33,9 +33,10 @@ public class Game {
 		int tourDuJoueur = 0;
 		while (true) {
 			while(tourDuJoueur < nbTortues) {
+				System.out.println("\nC'est au tour de la tortue " + tortues.get(tourDuJoueur).getColor());
 				afficheLaMainLePlateauEtLeBoard(tourDuJoueur);
 				
-				choixMultiple();
+				choixMultiple(tourDuJoueur);
 				
 				finDeTour(tourDuJoueur);
 				
@@ -176,11 +177,13 @@ public class Game {
 	public void afficheLaMainLePlateauEtLeBoard(int tourDuJoueur) {
 		plateau.updatePlateau();
 		tortues.get(tourDuJoueur).afficheLaMain();
-		tortues.get(tourDuJoueur).afficheLeProgramme();
+		//tortues.get(tourDuJoueur).afficheLeProgramme();
+		tortues.get(tourDuJoueur).afficheInventaire();
+		
 		
 	}
 	
-	public void choixMultiple() {
+	public void choixMultiple(int tourDuJoueur) {
 		
 		int saisieJoueur;
 		do {
@@ -195,12 +198,34 @@ public class Game {
 		
 		switch(saisieJoueur) {
 		case 1:
+			String saisieUtilisateur = "";
+			do {
+				
+				
+				if (tortues.get(tourDuJoueur).getMain().cardsList.size() != 0) {
+					completerProgramme(tourDuJoueur);
+					if (tortues.get(tourDuJoueur).getMain().cardsList.size() != 0) {
+						do {
+							System.out.println("Voulez-vous choisir une autre carte? \n"
+									+ "Entrez \"oui\" ou \"non\"");
+							saisieUtilisateur = scanner.nextLine();
+							}while(!saisieUtilisateur.contentEquals("oui") && !saisieUtilisateur.contentEquals("non"));
+					}
+					
+				}
+				
+				
+				
+			}while (tortues.get(tourDuJoueur).getMain().cardsList.size() != 0 && saisieUtilisateur.contentEquals("oui"));
+			
 			break;
 			
 		case 2:
+			construireMur(tourDuJoueur);
 			break;
 			
 		case 3:
+			executerProgramme(tourDuJoueur);
 			break;
 		}
 	}
@@ -247,6 +272,39 @@ public class Game {
 		}
 		
 		afficheLaMainLePlateauEtLeBoard(tourDuJoueur);
+		
+	}
+	
+	public void completerProgramme(int tourDuJoueur) {
+		int saisieJoueur;
+		int i;
+		do {
+			i = 0;
+			System.out.println("Choisissez une carte : ");
+			
+			for (Carte carte : tortues.get(tourDuJoueur).getMain().cardsList) {
+				System.out.println(i + " - " + carte.getType());
+				i++;
+			}
+			saisieJoueur = Integer.parseInt(scanner.nextLine());
+			
+			
+		}while(saisieJoueur < 0 || saisieJoueur > i - 1);
+		
+		tortues.get(tourDuJoueur).invoquerUneCarte(indexToCarteInHand(saisieJoueur, tourDuJoueur)); // invoque une carte sur le programme et le retire de la main
+	}
+	
+	public void construireMur(int tourDuJoueur) {
+		
+	}
+	
+	public void executerProgramme(int tourDuJoueur) {
+		
+	}
+	
+	public Carte indexToCarteInHand(int index, int tourDuJoueur) {
+		
+		return tortues.get(tourDuJoueur).getMain().cardsList.get(index);
 		
 	}
 

@@ -48,6 +48,11 @@ public class ListeDeCartes {
 		setTaille(this.cardsList.size());
 	}
 	
+	public void retirerUneCarte(int index) {
+		this.cardsList.remove(index);
+		setTaille(this.cardsList.size());
+	}
+	
 	public void retirerPremiereCarte() {
 		if (this.taille != 0) {
 			cardsList.remove(0);

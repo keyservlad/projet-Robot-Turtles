@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Tortue {
 	
@@ -16,10 +17,11 @@ public class Tortue {
 	private Deck deck;
 	private Programme programme;
 	
+	private HashMap<String, Integer> inventaire = new HashMap<String, Integer>();		// on cree une map avec les murs (pierre et glace et plus tard caisse) et le nombre restant dans l'inventaire du joueur
+	
 	
 	public Tortue() {
-		//creation de listes de cartes 
-		//creation des murs
+		
 	}
 	
 	
@@ -42,6 +44,12 @@ public class Tortue {
 		programme = new Programme();
 		
 		// creation de listes de cartes
+		
+		this.inventaire.put("murDeGlace", 2);
+		this.inventaire.put("murDePierre", 3);
+		
+		
+		
 		
 	}
 	
@@ -223,10 +231,26 @@ public class Tortue {
 	}
 	
 	
+	public void afficheInventaire() {
+		System.out.print("Votre Inventaire : ");
+		System.out.print("murs de glace : " + this.inventaire.get("murDeGlace") + " - murs de pierre : " + this.inventaire.get("murDePierre") + "\n");
+		
+	}
+	
+	
 	
 	
 	public void envoyerUneCarteAuCimetiere(Carte carte) {
 		this.defausse.ajouterCarte(carte);
+	}
+	
+	public void invoquerUneCarte(Carte carte) {
+		
+		// ajouter une condition si le board est full TODO
+		
+		this.programme.ajouterCarte(carte);
+		this.main.retirerUneCarte(carte.getIndex(this.main));
+		
 	}
 	
 	public void videLaMain() {
@@ -236,6 +260,26 @@ public class Tortue {
 	public void afficheLeProgramme() {
 		System.out.print("votre programme : ");
 		this.programme.afficheLaListe();
+	}
+	
+	public void retirerMurDeGlaceInventaire() {
+		if (this.inventaire.get("murDeGlace") != 0) {
+			this.inventaire.replace("murDeGlace", this.inventaire.get("murDeGlace") - 1);
+		}else {
+			//TODO
+		}
+		
+		
+	}
+	
+	public void retirerMurDePierreInventaire() {
+		if (this.inventaire.get("murDePierre") != 0) {
+			this.inventaire.replace("murDePierre", this.inventaire.get("murDePierre") - 1);
+		}else {
+			//TODO
+		}
+		
+		
 	}
 	
 	

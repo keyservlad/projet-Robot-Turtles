@@ -96,7 +96,7 @@ public class Plateau {
 		
 		afficherPlateau();
 		
-		// afficher la main (peut etre)
+		
 	}
 	
 	public void viderPlateau() {
