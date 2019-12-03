@@ -253,7 +253,7 @@ public class Tortue {
 		// ajouter une condition si le board est full TODO
 		
 		this.programme.ajouterCarte(carte);
-		this.main.retirerUneCarte(carte.getIndex(this.main));
+		this.main.retirerUneCarte(carte.getIndex(this.main.getCardsList()));
 		
 	}
 	

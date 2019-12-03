@@ -78,5 +78,9 @@ public class ListeDeCartes {
 		}
 		System.out.println();
 	}
+	
+	public void clearListe() {
+		this.cardsList.clear();
+	}
 
 }

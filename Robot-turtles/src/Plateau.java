@@ -125,7 +125,7 @@ public class Plateau {
 			}
 			else if ((yPos + 1 > 7) || (this.plateau[yPos + 1][xPos] != ' ')) {
 				return false;
-			}else 
+			} 
 			
 			
 			break;

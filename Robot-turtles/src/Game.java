@@ -381,6 +381,15 @@ public class Game {
 	
 	public void executerProgramme(int tourDuJoueur) {
 		
+		for ( Carte carte : tortues.get(tourDuJoueur).getProgramme().getCardsList()) {
+			carte.invocation(tortues.get(tourDuJoueur));
+			tortues.get(tourDuJoueur).getDefausse().ajouterCarte(carte);
+			//tortues.get(tourDuJoueur).getProgramme().getCardsList().remove(carte.getIndex(tortues.get(tourDuJoueur).getProgramme().getCardsList()));
+		}
+		
+		tortues.get(tourDuJoueur).getProgramme().clearListe();		
+		
+		
 	}
 	
 	public Carte indexToCarteInHand(int index, int tourDuJoueur) {

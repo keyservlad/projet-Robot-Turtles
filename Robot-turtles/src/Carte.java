@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Carte {
 	
@@ -59,9 +60,9 @@ public class Carte {
 		// TODO
 	}
 	
-	public int getIndex(ListeDeCartes list) {
+	public int getIndex(ArrayList<Carte> list) {
 		int i = 0;
-		for (Carte carte : list.cardsList) {
+		for (Carte carte : list) {
 			if (carte.type == this.type) {
 				return i;
 			}
