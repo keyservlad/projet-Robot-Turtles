@@ -120,39 +120,57 @@ public class Plateau {
 	public boolean deplacementValide(char direction, int xPos, int yPos, String color){
 		switch(direction) {
 		case 'S':
+			if (yPos + 1 > 7) {
+				return false;
+			}
 			if (this.plateau[yPos + 1][xPos] == 'X') {
 				Game.victoire(color);
 			}
-			else if ((yPos + 1 > 7) || (this.plateau[yPos + 1][xPos] != ' ')) {
+			else if ((this.plateau[yPos + 1][xPos] != ' ')) {
 				return false;
-			} 
+			}
+			
+			
 			
 			
 			break;
 			
 		case 'N':
+			if (yPos - 1 < 0) {
+				return false;
+			}
 			if (this.plateau[yPos - 1][xPos] == 'X') {
 				Game.victoire(color);
 			}
-			else if ((yPos - 1 < 0) || (this.plateau[yPos - 1][xPos] != ' ')) {
+			else if (this.plateau[yPos - 1][xPos] != ' ') {
 				return false;
 			}
+			
+			
 			break;
 			
 		case 'E':
+			if (xPos > 7) {
+				return false;
+			}
 			if (this.plateau[yPos][xPos + 1] == 'X') {
 				Game.victoire(color);
 			}
-			else if ((xPos + 1 > 7) || (this.plateau[yPos][xPos + 1] != ' ')) {
+			else if (this.plateau[yPos][xPos + 1] != ' ') {
 				return false;
 			}
+			
+			
 			break;
 			
 		case 'W':
+			if (xPos - 1 < 0) {
+				return false;
+			}
 			if (this.plateau[yPos][xPos - 1] == 'X') {
 				Game.victoire(color);
 			}
-			else if ((xPos - 1 < 0) || (this.plateau[yPos][xPos - 1] != ' ')) {
+			else if (this.plateau[yPos][xPos - 1] != ' ') {
 				return false;
 			}
 			
