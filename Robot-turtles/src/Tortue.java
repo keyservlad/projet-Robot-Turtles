@@ -7,7 +7,11 @@ public class Tortue {
 	
 	private String color; 
 	private int xPos;
+	private int initialxPos;
 	private int yPos;
+	private int initialyPos;
+	private char initialDirection = 'S';
+	
 	private char direction;
 	
 	private char symbol;
@@ -47,6 +51,8 @@ public class Tortue {
 		
 		this.inventaire.put("murDeGlace", 2);
 		this.inventaire.put("murDePierre", 3);
+		
+		
 		
 		
 		
@@ -216,6 +222,14 @@ public class Tortue {
 		return this.programme;
 	}
 	
+	public char getDirection() {
+		return this.direction;
+	}
+	
+	public void setDirection(char direction) {
+		this.direction = direction;
+	}
+	
 	public void pioche() {
 		
 		ArrayList<Carte> handList = main.getCardsList();
@@ -285,6 +299,175 @@ public class Tortue {
 		
 		
 	}
+
+
+
+	public void actionLaser() {
+		switch (this.direction) {
+		case 'S':
+			for (int i = this.yPos + 1; i < 7; i++) {
+				
+				if (Game.plateau.getPlateau()[i][this.xPos] == 'G') {
+					Game.plateau.melt(i, this.xPos);
+					break;
+					
+				}else if(Game.plateau.getPlateau()[i][this.xPos] == 'M') {
+					
+				}
+				
+				else if (Game.plateau.getPlateau()[i][this.xPos] == 'R' || 
+						Game.plateau.getPlateau()[i][this.xPos] == 'V' || 
+						Game.plateau.getPlateau()[i][this.xPos] == 'B' || 
+						Game.plateau.getPlateau()[i][this.xPos] == 'J') {
+					
+					for (Tortue tortue : Game.tortues) {
+						
+						
+						
+						if (tortue.getSymbol() == (Game.plateau.getUneCase(this.xPos, i))) {
+
+							Game.resetTortue(tortue);
+							break;
+						}
+					}
+					break;
+				}
+			}
+			break;
+			
+		case 'N':
+			for (int i = this.yPos - 1; i > 0; i--) {
+				
+				if (Game.plateau.getPlateau()[i][this.xPos] == 'G') {
+					Game.plateau.melt(i, this.xPos);
+					break;
+					
+				}else if(Game.plateau.getPlateau()[i][this.xPos] == 'M') {
+					
+				}
+				
+				else if (Game.plateau.getPlateau()[i][this.xPos] == 'R' || 
+						Game.plateau.getPlateau()[i][this.xPos] == 'V' || 
+						Game.plateau.getPlateau()[i][this.xPos] == 'B' || 
+						Game.plateau.getPlateau()[i][this.xPos] == 'J') {
+					
+					for (Tortue tortue : Game.tortues) {
+						
+						
+						
+						if (tortue.getSymbol() == (Game.plateau.getUneCase(this.xPos, i))) {
+
+							Game.resetTortue(tortue);
+							break;
+						}
+					}
+					break;
+				}
+			}
+			break;
+			
+		case 'E':
+			for (int i = this.xPos + 1; i < 7; i++) {
+				
+				if (Game.plateau.getPlateau()[this.yPos][i] == 'G') {
+					Game.plateau.melt(this.yPos, i);
+					break;
+					
+				}else if(Game.plateau.getPlateau()[this.yPos][i] == 'M') {
+					
+				}
+				
+				else if (Game.plateau.getPlateau()[this.yPos][i] == 'R' || 
+						Game.plateau.getPlateau()[this.yPos][i] == 'V' || 
+						Game.plateau.getPlateau()[this.yPos][i] == 'B' || 
+						Game.plateau.getPlateau()[this.yPos][i] == 'J') {
+					
+					for (Tortue tortue : Game.tortues) {
+						
+						
+						
+						if (tortue.getSymbol() == (Game.plateau.getUneCase(i, this.yPos))) {
+
+							Game.resetTortue(tortue);
+							break;
+						}
+					}
+					break;
+				}
+			}
+			break;
+			
+		case 'W':
+			for (int i = this.xPos - 1; i > 0; i--) {
+				
+				if (Game.plateau.getPlateau()[this.yPos][i] == 'G') {
+					Game.plateau.melt(this.yPos, i);
+					break;
+					
+				}else if(Game.plateau.getPlateau()[this.yPos][i] == 'M') {
+					
+				}
+				
+				else if (Game.plateau.getPlateau()[this.yPos][i] == 'R' || 
+						Game.plateau.getPlateau()[this.yPos][i] == 'V' || 
+						Game.plateau.getPlateau()[this.yPos][i] == 'B' || 
+						Game.plateau.getPlateau()[this.yPos][i] == 'J') {
+					
+					for (Tortue tortue : Game.tortues) {
+						
+						
+						
+						if (tortue.getSymbol() == (Game.plateau.getUneCase(i, this.yPos))) {
+
+							Game.resetTortue(tortue);
+							break;
+						}
+					}
+					break;
+				}
+			}
+			break;
+			
+		}
+		
+	}
+
+
+
+	public int getInitialxPos() {
+		return initialxPos;
+	}
+
+
+
+	public void setInitialxPos(int initialxPos) {
+		this.initialxPos = initialxPos;
+	}
+
+
+
+	public int getInitialyPos() {
+		return initialyPos;
+	}
+
+
+
+	public void setInitialyPos(int initialyPos) {
+		this.initialyPos = initialyPos;
+	}
+
+
+
+	public char getInitialDirection() {
+		return initialDirection;
+	}
+
+
+
+	public void setInitialDirection(char initialDirection) {
+		this.initialDirection = initialDirection;
+	}
+	
 	
 	
 	

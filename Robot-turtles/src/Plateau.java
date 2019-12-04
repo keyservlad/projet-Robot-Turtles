@@ -19,53 +19,7 @@ public class Plateau {
                 plateau[i][j] = ' ';
             }
         }
-		// rajouter les tortues et les joyaux et les tuiles
-		switch(nbTortues) {
-		case 2:
-			plateau[0][1] = 'R';
-			plateau[0][5] = 'V';
-			
-			plateau[7][3] = 'X';
-			
-			for (int i = 0; i < 8; i++) {
-				plateau[i][7] = 'M';
-			}
-			
-			break;
-			
-		case 3:
-			
-			plateau[0][0] = 'R';
-			plateau[0][3] = 'V';
-			plateau[0][6] = 'B';
-			
-			plateau[7][0] = 'X';
-			plateau[7][3] = 'X';
-			plateau[7][6] = 'X';
-			
-			
-			for (int i = 0; i < 8; i++) {
-				plateau[i][7] = 'M';
-			}
-			break;
-			
-		case 4:
-			
-			plateau[0][0] = 'R';
-			plateau[0][2] = 'V';
-			plateau[0][5] = 'B';
-			plateau[0][7] = 'J';
-			
-			
-			plateau[7][1] = 'X';
-			plateau[7][6] = 'X';
-			
-			
-			break;
 		
-		}
-		
-		afficherPlateau();
 		
 		
 		
@@ -182,6 +136,16 @@ public class Plateau {
 		
 		
 		return true;
+	}
+	
+	
+	public void melt(int x, int y) {
+		this.plateau[y][x] = ' ';
+		this.updatePlateau();
+	}
+	
+	public char getUneCase(int x, int y) {
+		return this.plateau[y][x];
 	}
 
 }

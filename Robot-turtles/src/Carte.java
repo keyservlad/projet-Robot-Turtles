@@ -57,7 +57,7 @@ public class Carte {
 	}
 	
 	public void actionCarteLaser(Tortue tortue) {
-		// TODO
+		tortue.actionLaser();
 	}
 	
 	public int getIndex(ArrayList<Carte> list) {

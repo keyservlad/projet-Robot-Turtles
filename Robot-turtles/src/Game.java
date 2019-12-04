@@ -9,16 +9,12 @@ public class Game {
 	public Scanner scanner = new Scanner(System.in);
 	
 	
-	public Tortue tortueRouge;
-	public Tortue tortueVerte;
-	public Tortue tortueBleue;
-	public Tortue tortueJaune;
+	public static Tortue tortueRouge;
+	public static Tortue tortueVerte;
+	public static Tortue tortueBleue;
+	public static Tortue tortueJaune;
 	
 	
-	private Tortue tortueRougeInitiale;
-	private Tortue tortueVerteInitiale;
-	private Tortue tortueBleueInitiale;
-	private Tortue tortueJauneInitiale;
 	
 	
 	public static Plateau plateau;
@@ -26,19 +22,35 @@ public class Game {
 	
 	public void run() {
 		
+		plateau = new Plateau();
 		creationTortues(choixNbJoueurs());
 		
-		plateau = new Plateau();
+		
 		
 		int tourDuJoueur = 0;
 		while (true) {
 			while(tourDuJoueur < nbTortues) {
 				System.out.println("\nC'est au tour de la tortue " + tortues.get(tourDuJoueur).getColor());
 				afficheLaMainLePlateauEtLeBoard(tourDuJoueur);
-				
+				/*
 				choixMultiple(tourDuJoueur);
-				
+				*/
 				finDeTour(tourDuJoueur);
+				
+				tortueRouge.actionLaser();
+				
+				tortueVerte.avance();
+				tortueVerte.avance();
+				tortueVerte.avance();
+				tortueVerte.avance();
+				tortueVerte.turnright();
+				tortueVerte.avance();
+				tortueVerte.avance();
+				tortueVerte.avance();
+				tortueVerte.avance();
+				
+				
+				
 				
 				
 				
@@ -100,6 +112,18 @@ public class Game {
 			
 			tortues.add(tortueRouge);
 			tortues.add(tortueVerte);
+			
+			plateau.setPlateau(3, 7, 'X');
+			
+			for (int i = 0; i < 8; i++) {
+				plateau.setPlateau(7, i, 'M');
+			}
+			
+			tortueRouge.setInitialxPos(tortueRouge.getxPos());
+			tortueVerte.setInitialxPos(tortueVerte.getxPos());
+			
+			
+			
 			break;
 		case 3:
 			tortueRouge.setxy(0, 0);
@@ -111,6 +135,22 @@ public class Game {
 			tortues.add(tortueRouge);
 			tortues.add(tortueVerte);
 			tortues.add(tortueBleue);
+			
+			
+			
+			plateau.setPlateau(0, 7, 'X');
+			plateau.setPlateau(3, 7, 'X');
+			plateau.setPlateau(6, 7, 'X');
+			
+			
+			for (int i = 0; i < 8; i++) {
+				plateau.setPlateau(7, i, 'M');
+			}
+			
+			tortueRouge.setInitialxPos(tortueRouge.getxPos());
+			tortueVerte.setInitialxPos(tortueVerte.getxPos());
+			tortueBleue.setInitialxPos(tortueBleue.getxPos());
+			
 			break;
 		case 4:
 			
@@ -127,50 +167,41 @@ public class Game {
 			tortues.add(tortueVerte);
 			tortues.add(tortueBleue);
 			tortues.add(tortueJaune);
+			
+			
+			plateau.setPlateau(1, 7, 'X');
+			plateau.setPlateau(6, 7, 'X');
+			
+			tortueRouge.setInitialxPos(tortueRouge.getxPos());
+			tortueVerte.setInitialxPos(tortueVerte.getxPos());
+			tortueBleue.setInitialxPos(tortueBleue.getxPos());
+			tortueJaune.setInitialxPos(tortueJaune.getxPos());
+			
 			break;
 		}
 		
-		tortueRougeInitiale = tortueRouge;
-		tortueVerteInitiale = tortueVerte;
-		tortueBleueInitiale = tortueBleue;
-		tortueJauneInitiale = tortueJaune;
+		
 		
 		
 		
 	}
 	
 	
-	public void renvoiAuDebut(Tortue tortue) {
-		switch (tortue.getColor()) {
-		case "Rouge":
-			tortueRouge = tortueRougeInitiale;
-			break;
-			
-		case "Verte":
-			tortueVerte = tortueVerteInitiale;
-			break;
-			
-		case "Bleue":
-			tortueBleue = tortueBleueInitiale;
-			break;
-			
-		case "Jaune":
-			tortueJaune = tortueJauneInitiale;
-			break;
-		}
-		
-		plateau.updatePlateau();
-		
-	}
+	
 
 	public static void victoire(String color) {
 		System.out.println(color + " gagne");
+		
+		Tortue tortueGagnante = null;;
 
 		for (Tortue tortue : tortues) {
 			if (tortue.getColor() == color) {
-				tortues.remove(tortue.getIndex(color));
+				tortueGagnante = tortue;
 			}
+			
 		}
+		
+		tortues.remove(tortueGagnante.getIndex(color));
 
 	}
 	
@@ -362,7 +393,7 @@ public class Game {
 		case 0:
 			return 'G';
 		case 1:
-			return 'P';
+			return 'M';
 			
 		}
 		
@@ -397,5 +428,56 @@ public class Game {
 		return tortues.get(tourDuJoueur).getMain().cardsList.get(index);
 		
 	}
+	
+	
+
+	public static void resetTortue(Tortue tortue) {
+		
+		switch (tortue.getSymbol()) {
+		case 'R':
+			
+			//  en verifiant que la case n'est pas occupée, aussi il faut completer dans Tortue l'action laser
+			tortueRouge.setxPos(tortueRouge.getInitialxPos());
+			tortueRouge.setyPos(tortueRouge.getInitialyPos());
+			tortueRouge.setDirection(tortueRouge.getInitialDirection());
+			
+			plateau.updatePlateau();
+			break;
+			
+		case 'V':
+			tortueVerte.setxPos(tortueVerte.getInitialxPos());
+			tortueVerte.setyPos(tortueVerte.getInitialyPos());
+			tortueVerte.setDirection(tortueVerte.getInitialDirection());
+			
+			plateau.updatePlateau();
+			
+			break;
+			
+		case 'B':
+			
+			tortueBleue.setxPos(tortueBleue.getInitialxPos());
+			tortueBleue.setyPos(tortueBleue.getInitialyPos());
+			tortueBleue.setDirection(tortueBleue.getInitialDirection());
+			
+			plateau.updatePlateau();
+			
+			break;
+			
+		case 'J':
+			
+			tortueJaune.setxPos(tortueJaune.getInitialxPos());
+			tortueJaune.setyPos(tortueJaune.getInitialyPos());
+			tortueJaune.setDirection(tortueJaune.getInitialDirection());
+			
+			plateau.updatePlateau();
+			
+			break;
+		}
+		plateau.updatePlateau();
+	}
+
+	
+	
+	
 
 }
