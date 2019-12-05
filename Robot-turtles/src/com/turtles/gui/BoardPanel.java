@@ -24,20 +24,31 @@ public class BoardPanel extends JPanel{
 	  }
 	
 	private static final Dimension BOARD_PANEL_DIMENSION = new Dimension(400, 350);
-	final List<TilePanel> boardTiles;
+	
+	// pour faire un echiquier il a utilisé une list mais on peut prendre un tableau
+	//final List<TilePanel> boardTiles;
+	
+	final TilePanel[][] boardTiles;
 	
 	public BoardPanel() {
 		super(new GridLayout(8, 8, 2, 2));
 		
+		this.boardTiles = new TilePanel[8][8];
 		
-			
-		this.boardTiles = new ArrayList<>();
 		
-		for (int i = 0; i < 64; i++) {
-			final TilePanel tilePanel = new TilePanel(this, i);
-			this.boardTiles.add(tilePanel);
+		
+		//this.boardTiles = new ArrayList<>();
+		
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
+				final TilePanel tilePanel = new TilePanel(this, i, j);
+				this.boardTiles[i][j] = tilePanel;
+				add(tilePanel);
+			}
 			
-			add(tilePanel);
+			
+			
+			
 		}
 		
 		setPreferredSize(BOARD_PANEL_DIMENSION);
