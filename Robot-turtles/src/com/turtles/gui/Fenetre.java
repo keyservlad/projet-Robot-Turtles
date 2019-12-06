@@ -26,6 +26,8 @@ public class Fenetre {
 		
 		
 		this.gameFrame.setSize(OUTER_FRAME_DIMENSION);
+		this.gameFrame.setLocationRelativeTo(null);
+		this.gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		this.boardPanel = new BoardPanel();
 		
