@@ -20,10 +20,10 @@ public class TilePanel extends JPanel{
 	private final int tilex;
 	private final int tiley;
 	
-	private final String tortueRougeIconPath = "./ressources/images/turtle2.png";
-	private final String tortueVerteIconPath = "./ressources/images/turtle4.png";		// reprendre ici , faire des images en png, tres petites
-	private final String tortueBleueIconPath = "./ressources/images/turtle1.png";
-	private final String tortueJauneIconPath = "./ressources/images/turtle3.png";
+	private final String tortueRougeIconPath = "./ressources/images/tortue_rouge.png";
+	private final String tortueVerteIconPath = "./ressources/images/tortue_verte.png";		// reprendre ici , faire des images en png, tres petites
+	private final String tortueBleueIconPath = "./ressources/images/tortue_bleue.png";
+	private final String tortueJauneIconPath = "./ressources/images/tortue_jaune.png";
 	private final String murIconPath = "./ressources/images/WALL.png";
 	private final String glaceIconPath = "./ressources/images/ICE.png";
 	private final String rubyIconPath = "./ressources/images/RUBY.png";

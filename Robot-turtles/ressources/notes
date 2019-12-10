@@ -1,0 +1,31 @@
+tortue --> main, defausse, deck, programme
+
+ListeDeCarte -> main, defausse, deck, programme
+-> carte (type, ) (action quand elle est invoquée, )
+
+-> cartes : bleues, jaune, violette, laser
+
+il faudra set des tailles max pour eviter d'avoir des trop gros board
+
+
+
+bug : dans le choix du type de mur (on peut choisir un mur meme s'il n'est pas affiche - ce pb ne sera plus quand on fera une IG donc osef)
+
+
+utiliser le type color au lieu de String
+au lieu de supprimer la tortue du joueur quand il gagne, il faut mettre une condition dans le corps du programme qui fait que quand la boucle va passer sur son  tour ca ne fera rien
+regles a implementer: on ne peut pas se deplacer ni poser de mur aux cases initiales (leur attribué le char 'S' peut etre quand la case est vide et afficher une tortue transparente
+on ne peux pas encerler un joueur un joyaux ni un spawn
+
+si on veut changer la couleur d'une tuile:
+dans le TilePanel():
+assignTileColor dans le constructeur, puis faire un setBackground(lightTileColor);
+
+peut etre faire comme lui avec une enum de toutes les tuiles (tres propre)
+
+
+
+
+dans le update plateau, mettre les images des tortues transparentes avant d'afficher les tortues pour permettre de savoir ou sont les spawns
+
+pour le menu : https://www.youtube.com/watch?v=urye2D3_mss&list=PLWms45O3n--6TvZmtFHaCWRZwEqnz2MHa&index=9

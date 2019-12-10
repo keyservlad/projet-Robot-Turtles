@@ -115,6 +115,7 @@ public class Game {
 			tortues.add(tortueVerte);
 			
 			plateau.setPlateau(3, 7, 'X');
+			//plateau.setPlateau(3, 3, 'G'); test pour le GUi et les images
 			
 			for (int i = 0; i < 8; i++) {
 				plateau.setPlateau(7, i, 'M');

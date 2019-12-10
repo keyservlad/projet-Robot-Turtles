@@ -23,7 +23,7 @@ public class BoardPanel extends JPanel{
 	    }                
 	  }
 	
-	private static final Dimension BOARD_PANEL_DIMENSION = new Dimension(400, 350);
+	private static final Dimension BOARD_PANEL_DIMENSION = new Dimension(400, 400);
 	
 	// pour faire un echiquier il a utilisé une list mais on peut prendre un tableau
 	//final List<TilePanel> boardTiles;

@@ -12,7 +12,7 @@ public class Fenetre {
 	
 	private final BoardPanel boardPanel;
 	
-	private final static Dimension OUTER_FRAME_DIMENSION = new Dimension(600, 600);
+	private final static Dimension OUTER_FRAME_DIMENSION = new Dimension(1000, 1000);
 	
 	
 	public Fenetre() {
@@ -32,6 +32,8 @@ public class Fenetre {
 		this.boardPanel = new BoardPanel();
 		
 		this.gameFrame.add(this.boardPanel, BorderLayout.CENTER);
+		this.gameFrame.setResizable(false);
+		this.gameFrame.setAlwaysOnTop(true);
 		this.gameFrame.setVisible(true);
 	}
 
