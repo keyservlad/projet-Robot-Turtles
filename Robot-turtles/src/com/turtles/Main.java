@@ -1,5 +1,5 @@
 package com.turtles;
-import com.turtles.gui.Fenetre;
+import com.turtles.gui.FenetreJeu;
 
 public class Main {
 	
@@ -11,8 +11,6 @@ public class Main {
 		Game game = new Game();
 		game.run();
 		
-		
-		Fenetre fenetre = new Fenetre();
 
 	}
 

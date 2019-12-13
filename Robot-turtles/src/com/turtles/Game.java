@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.turtles.gui.FenetreJeu;
+
 public class Game {
 	
 	public static int nbTortues;
@@ -20,9 +22,33 @@ public class Game {
 	
 	public static Plateau plateau;
 	
+	public static boolean isTourFini = false;
+	
+	
 	
 	public void run() {
 		
+		plateau = new Plateau();
+		creationTortues(choixNbJoueurs());
+		int tourDuJoueur = 0;
+		
+		
+		while(true) {
+			while(tourDuJoueur < nbTortues) {
+				FenetreJeu fenetre = new FenetreJeu(tourDuJoueur);
+				while(isTourFini == false) {
+					System.out.print("");
+				}
+				fenetre.cacherGameFrame();
+				isTourFini = false;
+				tourDuJoueur++;
+				
+			}
+			tourDuJoueur = 0;
+		}
+		
+		
+		/*
 		plateau = new Plateau();
 		creationTortues(choixNbJoueurs());
 		
@@ -67,8 +93,12 @@ public class Game {
 		
 		
 		
+		*/
 		
-		
+	}
+	
+	public List<Tortue> getTortues(){
+		return tortues;
 	}
 	
 	public int choixNbJoueurs() {
@@ -181,6 +211,8 @@ public class Game {
 			
 			break;
 		}
+		
+		plateau.updatePlateau();
 		
 		
 		
