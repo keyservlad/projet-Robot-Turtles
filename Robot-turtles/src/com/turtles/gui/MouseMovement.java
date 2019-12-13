@@ -24,11 +24,26 @@ public class MouseMovement implements MouseListener, MouseMotionListener{
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		e.getComponent().setLocation(e.getX() + e.getComponent().getX() - X, e.getY() + e.getComponent().getY() - Y);
+		
 		System.out.println(e.getY() + e.getComponent().getY());
+		
 		if (e.getY() + e.getComponent().getY() < 0 ) {
 			//refaire les limites et ajouter l'action de la carte
+			switch(FenetreJeu.typeDeLaCarteSelectionnee(e.getComponent())) {
+			case "Bleue":
+				System.out.println("bleu"); // TODO repprendre ici, refaire les cartes au photoshop, passer le jpanel handpanel devant le boardpanel, GUI part VII, grossir la carte quand on passe dessus, relier Carte avec la cardPanel en passant par toutes les cartes de la main je pense, puis faire l'action de la carte associee au joueur
+				break;
+				
+			case "Jaune":
+				break;
+				
+			case "Violette":
+				break;
+				
+			case "Laser":
+				break;
+			}
 			FenetreJeu.removeCarte(e.getComponent());
-			Game.isTourFini = true;
 		}
 	}
 

@@ -20,6 +20,7 @@ public class CardPanel extends JPanel{
 	
 	private static final Dimension CARD_PANEL_DIMENSION = new Dimension(10, 20);
 	private final int posCard;
+	private String type;
 	
 	private final String BlueCardIconPath = "./ressources/images/cards/BlueCard.png";
 	private final String LaserIconPath = "./ressources/images/cards/LaserCard.png";
@@ -49,12 +50,16 @@ public class CardPanel extends JPanel{
 			BufferedImage image = null;
 			if (carte.getType().contentEquals("Bleue")) {
 				image = ImageIO.read(new File(BlueCardIconPath));
+				this.setType("Bleue");
 			}else if(carte.getType().contentEquals("Jaune")) {
 				image = ImageIO.read(new File(YellowCardIconPath));
+				this.setType("Jaune");
 			}else if(carte.getType().contentEquals("Violette")) {
 				image = ImageIO.read(new File(PurpleCardIconPath));
+				this.setType("Violette");
 			}else if (carte.getType().contentEquals("Laser")) {
 				image = ImageIO.read(new File(LaserIconPath));
+				this.setType("Laser");
 			}else {
 				System.out.println("erreur");
 			}
@@ -71,6 +76,14 @@ public class CardPanel extends JPanel{
 			e.printStackTrace();
 		}
 		
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 }

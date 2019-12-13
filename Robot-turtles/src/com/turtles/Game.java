@@ -37,9 +37,9 @@ public class Game {
 			while(tourDuJoueur < nbTortues) {
 				FenetreJeu fenetre = new FenetreJeu(tourDuJoueur);
 				while(isTourFini == false) {
-					System.out.print("");
+					
 				}
-				fenetre.cacherGameFrame();
+				
 				isTourFini = false;
 				tourDuJoueur++;
 				

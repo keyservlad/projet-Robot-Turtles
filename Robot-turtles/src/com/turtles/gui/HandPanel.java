@@ -30,7 +30,7 @@ public class HandPanel extends JPanel{
 		}
 		
 		setPreferredSize(HAND_PANEL_DIMENSION);
-		//validate();
+		validate();
 	}
 	
 	

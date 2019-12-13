@@ -25,8 +25,6 @@ public class BoardPanel extends JPanel{
 	
 	private static final Dimension BOARD_PANEL_DIMENSION = new Dimension(400, 400);
 	
-	// pour faire un echiquier il a utilisé une list mais on peut prendre un tableau
-	//final List<TilePanel> boardTiles;
 	
 	final TilePanel[][] boardTiles;
 	
@@ -36,8 +34,6 @@ public class BoardPanel extends JPanel{
 		this.boardTiles = new TilePanel[8][8];
 		
 		
-		
-		//this.boardTiles = new ArrayList<>();
 		
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
@@ -53,6 +49,22 @@ public class BoardPanel extends JPanel{
 		
 		setPreferredSize(BOARD_PANEL_DIMENSION);
 		validate();
+		
+	}
+	
+	public void drawBoard() {
+		removeAll();
+		for (final TilePanel tilePanelRow[] : boardTiles) {
+			for (final TilePanel tilePanel : tilePanelRow) {
+				tilePanel.drawTile();
+				add(tilePanel);
+			}
+			
+			validate();
+			repaint();
+			
+		}
+		
 		
 	}
 

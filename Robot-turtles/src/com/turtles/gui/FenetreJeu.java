@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import com.turtles.Carte;
+
 public class FenetreJeu {
 	
 	private JFrame gameFrame = new JFrame();
@@ -38,6 +40,7 @@ public class FenetreJeu {
 		//this.gameFrame.setResizable(false);
 		gameFrame.setAlwaysOnTop(true);
 		gameFrame.add(this.handPanel, BorderLayout.SOUTH);
+		
 		MouseMovement move = new MouseMovement(handPanel.getComponents());
 		
 		
@@ -55,6 +58,11 @@ public class FenetreJeu {
 	
 	public void cacherGameFrame() {
 		this.gameFrame.setVisible(false);
+	}
+	
+	public static String typeDeLaCarteSelectionnee(Component component) {
+		CardPanel cardPanel = (CardPanel)component;
+		return cardPanel.getType();
 	}
 	
 	
