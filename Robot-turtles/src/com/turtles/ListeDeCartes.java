@@ -14,9 +14,6 @@ public class ListeDeCartes {
 	}
 	
 	
-	
-	
-	
 	public ArrayList<Carte> getCardsList() {
 		return this.cardsList;
 	}

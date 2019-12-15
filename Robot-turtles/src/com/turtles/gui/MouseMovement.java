@@ -35,12 +35,15 @@ public class MouseMovement implements MouseListener, MouseMotionListener{
 				break;
 				
 			case "Jaune":
+				System.out.println("jaune");
 				break;
 				
 			case "Violette":
+				System.out.println("violette");
 				break;
 				
 			case "Laser":
+				System.out.println("laser");
 				break;
 			}
 			FenetreJeu.removeCarte(e.getComponent());
