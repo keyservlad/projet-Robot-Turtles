@@ -53,7 +53,7 @@ public class MouseGlassListener extends MouseAdapter {
 		// On implémente le transfert lorsqu'on relâche le bouton de souris
 		// Ceci afin de ne pas supplanter le fonctionnement du déplacement
 		JComponent lab = (JComponent) event.getSource();
-		TransferHandler handle = lab.getTransferHandler();
+		//TransferHandler handle = lab.getTransferHandler();
 		
 
 		// On récupère le composant pour en déduire sa position
@@ -76,15 +76,11 @@ public class MouseGlassListener extends MouseAdapter {
 		
 		
 		String typeCarteSelect = FenetreJeu.typeDeLaCarteSelectionnee(composant);
-		if (location.getY() < 700) {
+		if (location.getY() < 700) {		// TODO il faudra probablement redefinir cette limite
 			
 			for (Carte carte : Game.tortues.get(Game.tourDuJoueur).getMain().getCardsList()) {
 				if (carte.getType().contentEquals(typeCarteSelect)) {
 					Game.tortues.get(Game.tourDuJoueur).getProgramme().ajouterCarte(carte);
-					
-					
-					//TODO retirer la carte de la main
-					// TODO repaint le bordel
 					
 					break;
 					

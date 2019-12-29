@@ -30,6 +30,8 @@ public class CardPanel extends JPanel{
 	private final String PurpleCardIconPath = "./ressources/images/cards/PurpleCard.png";
 	private final String YellowCardIconPath = "./ressources/images/cards/YellowCard.png";
 	
+	private final String LegendCardBack = "./ressources/images/cards/legendCardBack.png";
+	
 	private int X, Y, initialX, initialY;
 	
 	CardPanel(final String typePanel, final int posCard, int tourDuJoueur){
@@ -39,9 +41,9 @@ public class CardPanel extends JPanel{
 		this.posCard = posCard;
 		
 		setPreferredSize(CARD_PANEL_DIMENSION);
-		setBackground(new Color(1.0f, 1.0f, 1.0f ,0.55f));
+		setBackground(new Color(1.0f, 1.0f, 1.0f ,0.0f));
 		if (typePanel.contentEquals("Programme")){
-			assignImage(Game.tortues.get(tourDuJoueur).getProgramme().getCardsList().get(posCard));
+			assignImage("cachee");
 		}else {
 			assignImage(Game.tortues.get(tourDuJoueur).getMain().getCardsList().get(posCard));
 		}
@@ -131,6 +133,20 @@ public class CardPanel extends JPanel{
 		validate();
 	}
 
+	private void assignImage(String cachee) {
+		this.removeAll();
+		try {
+			add(new JLabel(new ImageIcon(ImageIO.read(new File(LegendCardBack)))));
+			
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		
+		
+		
+	}
+
 	private void assignImage(Carte carte) {
 		this.removeAll();
 		
@@ -139,6 +155,7 @@ public class CardPanel extends JPanel{
 		
 		try {
 			BufferedImage image = null;
+			
 			if (carte.getType().contentEquals("Bleue")) {
 				image = ImageIO.read(new File(BlueCardIconPath));
 				this.setType("Bleue");
