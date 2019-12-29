@@ -43,7 +43,7 @@ public class CardPanel extends JPanel{
 		setPreferredSize(CARD_PANEL_DIMENSION);
 		setBackground(new Color(1.0f, 1.0f, 1.0f ,0.0f));
 		if (typePanel.contentEquals("Programme")){
-			assignImage("cachee");
+			assignImage();
 		}else {
 			assignImage(Game.tortues.get(tourDuJoueur).getMain().getCardsList().get(posCard));
 		}
@@ -133,7 +133,7 @@ public class CardPanel extends JPanel{
 		validate();
 	}
 
-	private void assignImage(String cachee) {
+	private void assignImage() {
 		this.removeAll();
 		try {
 			add(new JLabel(new ImageIcon(ImageIO.read(new File(LegendCardBack)))));
