@@ -21,11 +21,12 @@ import com.turtles.Plateau;
 
 public class CardPanel extends JPanel{
 	
-	private static final Dimension CARD_PANEL_DIMENSION = new Dimension(5, 10);
+	private static final Dimension CARD_PANEL_DIMENSION = new Dimension(100, 135);
 	private final int posCard;
 	private String type;
+	private boolean isMovable = true;
 	
-	private final String BlueCardIconPath = "./ressources/images/cards/BlueCard-1.png";
+	private final String BlueCardIconPath = "./ressources/images/cards/BlueCard.png";
 	private final String LaserIconPath = "./ressources/images/cards/LaserCard.png";
 	private final String PurpleCardIconPath = "./ressources/images/cards/PurpleCard.png";
 	private final String YellowCardIconPath = "./ressources/images/cards/YellowCard.png";
@@ -200,6 +201,14 @@ public class CardPanel extends JPanel{
 	
 	public int getInitialY() {
 		return this.initialY;
+	}
+	
+	public boolean getIsMovable() {
+		return this.isMovable;
+	}
+	
+	public void setIsMovable(boolean isMovable) {
+		this.isMovable = isMovable;
 	}
 	
 	

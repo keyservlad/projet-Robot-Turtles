@@ -10,7 +10,7 @@ public class CardsPanel extends JPanel {
 	public static ProgrammePanel programmePanel;
 
 	CardsPanel(int tourDuJoueur) {
-		super(new BorderLayout());
+		super(new BorderLayout(0, 4));
 
 		handPanel = new HandPanel(this, tourDuJoueur);
 		programmePanel = new ProgrammePanel(tourDuJoueur);

@@ -26,6 +26,10 @@ public class MouseGlassListener extends MouseAdapter {
 	public void mousePressed(MouseEvent event) {
 		// On récupère le composant pour en déduire sa position
 		Component composant = event.getComponent();
+		if (FenetreJeu.isCardMovable(composant) == false) {
+			return;
+		}
+		
 		composant.hide();
 		Point location = (Point) event.getPoint().clone();
 
@@ -58,6 +62,9 @@ public class MouseGlassListener extends MouseAdapter {
 
 		// On récupère le composant pour en déduire sa position
 		Component composant = event.getComponent();
+		if (FenetreJeu.isCardMovable(composant) == false) {
+			return;
+		}
 		composant.show();
 		Point location = (Point) event.getPoint().clone();
 		// Les méthodes ci-dessous permettent, dans l'ordre,

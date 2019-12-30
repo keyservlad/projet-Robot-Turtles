@@ -2,6 +2,7 @@ package com.turtles.gui;
 
 import java.awt.CardLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -21,8 +22,8 @@ public class HandPanel extends JPanel{
 	private CardPanel[] handCards;
 	
 	public HandPanel(JPanel jpanel, int tourDuJoueur) {
-		super(new GridLayout(1, Game.tortues.get(tourDuJoueur).getMain().getCardsList().size(), 2, 2));
-
+		//super(new GridLayout(1, Game.tortues.get(tourDuJoueur).getMain().getCardsList().size(), 2, 2));
+		super(new FlowLayout());
 		creationMain();
 		
 		

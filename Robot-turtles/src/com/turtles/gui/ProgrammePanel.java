@@ -1,6 +1,7 @@
 package com.turtles.gui;
 
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
 import javax.swing.JPanel;
@@ -14,7 +15,7 @@ public class ProgrammePanel extends JPanel{
 	private CardPanel[] handCards;
 	
 	ProgrammePanel(int tourDuJoueur){
-		super(new GridLayout(1, Game.tortues.get(tourDuJoueur).getProgramme().getCardsList().size(), 2, 2));
+		super(new FlowLayout(FlowLayout.CENTER, 5, 50));
 		
 		//creationCartes();
 		
@@ -34,7 +35,7 @@ public class ProgrammePanel extends JPanel{
 		
 		for (int i = 0; i < Game.tortues.get(Game.tourDuJoueur).getProgramme().getCardsList().size() ; i++) {
 			CardPanel cardPanel = new CardPanel("Programme", i, Game.tourDuJoueur);
-			
+			cardPanel.setIsMovable(false);
 			this.handCards[i] = cardPanel;
 			add(cardPanel);
 		}

@@ -74,6 +74,11 @@ public class FenetreJeu {
 		return cardPanel.getType();
 	}
 	
+	public static boolean isCardMovable(Component component) {
+		CardPanel cardPanel = (CardPanel)component;
+		return cardPanel.getIsMovable();
+	}
+	
 	
 	
 /*
