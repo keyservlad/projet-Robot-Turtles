@@ -1,18 +1,11 @@
 package com.turtles.gui;
 
-import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-import java.util.List;
 
-import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
-import com.turtles.Carte;
 import com.turtles.Game;
 
 
@@ -21,9 +14,10 @@ public class HandPanel extends JPanel{
 	private static final Dimension HAND_PANEL_DIMENSION = new Dimension(400, 200);
 	private CardPanel[] handCards;
 	
-	public HandPanel(JPanel jpanel, int tourDuJoueur) {
+	public HandPanel(JPanel jpanel) {
 		//super(new GridLayout(1, Game.tortues.get(tourDuJoueur).getMain().getCardsList().size(), 2, 2));
 		super(new FlowLayout());
+		setBackground(new Color(1.0f, 1.0f, 1.0f, 0.0f));
 		creationMain();
 		
 		

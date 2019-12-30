@@ -1,5 +1,6 @@
 package com.turtles.gui;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -14,8 +15,9 @@ public class ProgrammePanel extends JPanel{
 	
 	private CardPanel[] handCards;
 	
-	ProgrammePanel(int tourDuJoueur){
+	ProgrammePanel(){
 		super(new FlowLayout(FlowLayout.CENTER, 5, 50));
+		setBackground(new Color(1.0f, 1.0f, 1.0f, 0.0f));
 		
 		//creationCartes();
 		

@@ -33,11 +33,11 @@ public class Game {
 		plateau = new Plateau();
 		creationTortues(choixNbJoueurs());
 		tourDuJoueur = 0;
-		
+		new FenetreJeu();
 		
 		while(true) {
 			while(tourDuJoueur < nbTortues) {
-				FenetreJeu fenetre = new FenetreJeu(tourDuJoueur);
+				
 				while(isTourFini == false) {
 					
 				}

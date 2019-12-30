@@ -3,9 +3,7 @@ package com.turtles.gui;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagLayout;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -17,7 +15,6 @@ import javax.swing.JPanel;
 
 import com.turtles.Carte;
 import com.turtles.Game;
-import com.turtles.Plateau;
 
 public class CardPanel extends JPanel{
 	

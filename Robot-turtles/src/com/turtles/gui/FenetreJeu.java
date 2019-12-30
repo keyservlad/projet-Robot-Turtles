@@ -1,14 +1,16 @@
 package com.turtles.gui;
 
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.MediaTracker;
+import java.awt.Toolkit;
 
-import javax.swing.*;
-
-import com.turtles.Carte;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class FenetreJeu {
 	
@@ -19,16 +21,32 @@ public class FenetreJeu {
 	
 	public static MyGlassPane glass = new MyGlassPane();
 	
+	public static OpponentsPanel opponentsPanel = new OpponentsPanel();
+	public static ScoringPanel scoringPanel = new ScoringPanel();
+	public static ButtonsPanel buttonsPanel = new ButtonsPanel();
 	
 	
 	
-	private final static Dimension OUTER_FRAME_DIMENSION = new Dimension(1000, 1000);
+	
+	private final static Dimension OUTER_FRAME_DIMENSION = new Dimension(1920, 1080);
+	
+	private final String BackgroundImage = "./ressources/images/gaelBackground.jpg";
+	private Image fond;
 
 	
-	public FenetreJeu(int tourDuJoueur) {
+	public FenetreJeu() {
 		
 		
 		gameFrame = new JFrame("Robot Turtles");
+		fond = Toolkit.getDefaultToolkit().getImage(BackgroundImage);
+		try{
+			MediaTracker mt = new MediaTracker(gameFrame);
+			mt.addImage(fond,0);
+			mt.waitForAll();
+		}catch(Exception e){e.printStackTrace();}
+		gameFrame.setContentPane(new ContentPane(fond));
+		
+		
 		gameFrame.setLayout(new BorderLayout());
 		
 		//final JMenuBar tableMenuBar = createTableMenuBar();
@@ -40,30 +58,53 @@ public class FenetreJeu {
 		gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//this.handPanel = new HandPanel(tourDuJoueur);
-		this.boardPanel = new BoardPanel();
-		this.cardsPanel = new CardsPanel(tourDuJoueur);
+		boardPanel = new BoardPanel();
+		cardsPanel = new CardsPanel();
 		
 		
 		
-		gameFrame.add(this.boardPanel, BorderLayout.CENTER);
-		//this.gameFrame.setResizable(false);
-		gameFrame.setAlwaysOnTop(true);
-		gameFrame.add(this.cardsPanel, BorderLayout.SOUTH);
+		gameFrame.add(boardPanel, BorderLayout.CENTER);
+		gameFrame.add(cardsPanel, BorderLayout.SOUTH);
+		gameFrame.add(buttonsPanel, BorderLayout.EAST);
+		gameFrame.add(opponentsPanel, BorderLayout.NORTH);
+		gameFrame.add(scoringPanel, BorderLayout.WEST);
+		
 		
 		gameFrame.setGlassPane(glass);
 		
+		
+		
+		
+		
+		gameFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		
+		gameFrame.setResizable(false);
+		gameFrame.setAlwaysOnTop(true);
+		
 		gameFrame.setVisible(true);
-		gameFrame.setAlwaysOnTop(false);
-		
-		
 		
 	}
 
-/*
-	public static void removeCarte(Component component) {
-		handPanel.remove(component);
-		
-	}*/
+	private class ContentPane extends JPanel {
+		private Image image;
+
+		public ContentPane(Image leFond) {
+			super(new CardLayout());
+			image = leFond;
+		}
+
+		public void paintComponent(Graphics g) {
+			g.drawImage(image, 0, 0, this.getWidth(), this.getHeight(), null);
+		}
+
+	}
+
+	/*
+	 * public static void removeCarte(Component component) {
+	 * handPanel.remove(component);
+	 * 
+	 * }
+	 */
 	
 	public void cacherGameFrame() {
 		this.gameFrame.setVisible(false);
