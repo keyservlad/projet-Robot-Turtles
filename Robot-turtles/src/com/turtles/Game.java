@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.turtles.gui.FenetreJeu;
+import com.turtles.gui.FenetreMenu;
 
 public class Game {
 	
@@ -32,6 +33,12 @@ public class Game {
 		
 		plateau = new Plateau();
 		creationTortues(choixNbJoueurs());
+		
+		//new FenetreMenu();
+		//while (isTourFini == false) {
+			
+		//}
+		
 		tourDuJoueur = 0;
 		new FenetreJeu();
 		

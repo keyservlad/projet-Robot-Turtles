@@ -32,4 +32,27 @@ pour le menu : https://www.youtube.com/watch?v=urye2D3_mss&list=PLWms45O3n--6TvZ
 
 menu 2048 : https://www.youtube.com/watch?v=5kZF9qJY-9k
 
-drag and drop (video pas ouf) : https://www.youtube.com/watch?v=HYqODAQ2lQw
+drag and drop (video pas ouf) : https://www.youtube.com/watch?v=HYqODAQ2lQw	(on a fait la méthode openclassroom tout en bas de la page)
+
+
+
+
+passer isTourFini de Game à true pour passer au joueur suivant
+
+
+les etats de la game : 
+- choix nombre joueurs + limite de score
+- joueur 1:
+	- choix de l'action à effectuer (jouer carte, invoquer, placer mur)
+	- jouer carte (place autant de carte qu'il le désire, bouton fin de tour apparait au bout d'une carte, il devient vert quand le board est plein ou quand la main est vide)
+	- invoquer (juste le bouton fin de tour qui apparait en vert, invoque les carte une par une dans l'ordre -montrer la carte en gros pendant une seconde à chaque fois qu'elle est invoquée)
+	- placer un mur (activation du mouselistener sur les tilePanel, apparition du bouton fin de tour en vert quand le mur est placé)
+	
+- joueur 2:
+	- idem
+	
+- fin de partie
+
+
+--> pour la suite : 
+	on va utiliser les drawPanel pour afficher les panels selon l'etat de la game

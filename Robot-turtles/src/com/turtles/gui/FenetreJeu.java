@@ -8,9 +8,13 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.MediaTracker;
 import java.awt.Toolkit;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JWindow;
 
 public class FenetreJeu {
 	
@@ -37,7 +41,8 @@ public class FenetreJeu {
 	public FenetreJeu() {
 		
 		
-		gameFrame = new JFrame("Robot Turtles");
+		gameFrame = new JFrame();
+		
 		fond = Toolkit.getDefaultToolkit().getImage(BackgroundImage);
 		try{
 			MediaTracker mt = new MediaTracker(gameFrame);
@@ -55,9 +60,8 @@ public class FenetreJeu {
 		
 		gameFrame.setSize(OUTER_FRAME_DIMENSION);
 		gameFrame.setLocationRelativeTo(null);
-		gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		//this.handPanel = new HandPanel(tourDuJoueur);
 		boardPanel = new BoardPanel();
 		cardsPanel = new CardsPanel();
 		
@@ -73,8 +77,28 @@ public class FenetreJeu {
 		gameFrame.setGlassPane(glass);
 		
 		
-		
-		
+		gameFrame.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+					System.exit(0);
+				}
+				
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		
 		gameFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		
@@ -82,6 +106,8 @@ public class FenetreJeu {
 		gameFrame.setAlwaysOnTop(true);
 		
 		gameFrame.setVisible(true);
+		gameFrame.setAlwaysOnTop(false);
+		
 		
 	}
 
