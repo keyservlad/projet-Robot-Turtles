@@ -3,8 +3,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.turtles.gui.EtatPartie;
 import com.turtles.gui.FenetreJeu;
-import com.turtles.gui.FenetreMenu;
 
 public class Game {
 	
@@ -23,38 +23,61 @@ public class Game {
 	
 	public static Plateau plateau;
 	
-	public static boolean isTourFini = false;
 	
 	public static int tourDuJoueur;
+	
+	public static EtatPartie etatPartie = EtatPartie.DEBUTPARTIE;
 	
 	
 	
 	public void run() {
 		
 		plateau = new Plateau();
-		FenetreMenu fenetre = new FenetreMenu();
+		FenetreJeu fenetre = new FenetreJeu();
 		
 		
 		
-		while (isTourFini == false) { // isTourFini à supprimer!! (remplacer par les etats de la game)
+		while (etatPartie == EtatPartie.DEBUTPARTIE) { 
 			
 			fenetre.repaint();
 			
 		}
 		
 		creationTortues();
-		fenetre.hide();
+		//fenetre.hide();
 		tourDuJoueur = 0;
-		new FenetreJeu();
+		//new FenetreJeu();
+		fenetre.afficherFenetreJeu();
 		
 		while(true) {
 			while(tourDuJoueur < nbTortues) {
 				
-				while(isTourFini == false) {
+				//etatPartie = EtatPartie.CHOIXACTION;
+				//faire un fonction changement de joueur?
+				
+				while(etatPartie == EtatPartie.CHOIXACTION) {
+					
+					// choix action
 					
 				}
+				
+				while(etatPartie == EtatPartie.PLACER) {
+					
+					//invoquer
+				}
+				
+				while(etatPartie == EtatPartie.INVOQUER) {
+					
+				}
+				
+				while(etatPartie == EtatPartie.PLACER) {
+					
+				}
+				
+				
+				
 				System.out.println("aa");
-				isTourFini = false;
+				
 				tourDuJoueur++;
 				
 			}

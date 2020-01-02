@@ -1,16 +1,5 @@
-tortue --> main, defausse, deck, programme
-
-ListeDeCarte -> main, defausse, deck, programme
--> carte (type, ) (action quand elle est invoquée, )
-
--> cartes : bleues, jaune, violette, laser
 
 il faudra set des tailles max pour eviter d'avoir des trop gros board
-
-
-
-bug : dans le choix du type de mur (on peut choisir un mur meme s'il n'est pas affiche - ce pb ne sera plus quand on fera une IG donc osef)
-
 
 utiliser le type color au lieu de String
 au lieu de supprimer la tortue du joueur quand il gagne, il faut mettre une condition dans le corps du programme qui fait que quand la boucle va passer sur son  tour ca ne fera rien
@@ -52,8 +41,39 @@ les etats de la game :
 
 --> pour la suite : 
 	on va utiliser les drawPanel pour afficher les panels selon l'etat de la game
-	
-	
-amelioration : fusionner les classer Fenetre menu et FenetreJeu avec un removeall() puis affichage de la fenetre correspondante, à faire dans une méthode et non plus dans le constructeur
 
-TODO next : faire les tours des joueurs avec l'enum, puis ajouter les boutons dans le buttonPanel, ajouter les etapes d'un tour dans l'enum, la differentiation entre les joueur se fera au moment de draw grace à la variable tourDuJoueur
+
+mesures:
+	- boardPanel : 450 * 450
+	- northPanel : 450 * 315
+		- tourPanel : 450 * 157
+		- scorePanel : 450 * 157
+		
+	- southPanel : 450 * 315
+		- maMainPanel : 450 * 157
+		- monBoardPanel : 450 * 157
+		
+	- westPanel : 735 * 1080
+		- enemyPanels ...
+			- enemyBoardPanel
+			- enemyInventory (lui meme un panel avec une image de fond, une image du mur et un nombre)
+		
+	- eastPanel : 735 * 1080
+		- instructionPanel : Border.north
+		- buttonsPanel : Border.south
+			- placer à la main le bouton de fin de tour, le deck restant et l'inventaire (panel contenant une image et un nombre ainsi qu'une image de background)
+
+
+
+Amélioration possible:
+faire une classe inventaire où l'on peut modifier la taille en parametre du constructeur
+idem pour le board (corriger sur le programme existant)
+
+
+
+
+
+
+
+
+
