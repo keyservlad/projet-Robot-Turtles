@@ -8,7 +8,7 @@ import com.turtles.gui.FenetreMenu;
 
 public class Game {
 	
-	public static int nbTortues;
+	public static int nbTortues = 3;
 	public static List<Tortue> tortues = new ArrayList<>();
 	public Scanner scanner = new Scanner(System.in);
 	
@@ -32,13 +32,18 @@ public class Game {
 	public void run() {
 		
 		plateau = new Plateau();
-		creationTortues(choixNbJoueurs());
+		FenetreMenu fenetre = new FenetreMenu();
 		
-		//new FenetreMenu();
-		//while (isTourFini == false) {
+		
+		
+		while (isTourFini == false) { // isTourFini à supprimer!! (remplacer par les etats de la game)
 			
-		//}
+			fenetre.repaint();
+			
+		}
 		
+		creationTortues();
+		fenetre.hide();
 		tourDuJoueur = 0;
 		new FenetreJeu();
 		
@@ -124,12 +129,10 @@ public class Game {
 		
 	}
 	
-	public void creationTortues(int nbJoueurs) {
+	public void creationTortues() {
 		
-		Game.nbTortues = nbJoueurs;	
 		
 		// création des objets tortue pour chaque cas
-		
 		
 		
 		tortueRouge = new Tortue("Rouge");

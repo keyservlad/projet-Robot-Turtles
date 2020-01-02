@@ -7,11 +7,11 @@ public class Plateau {
 	
 	
 	public Plateau() {
-		initialisationPlateau(Game.nbTortues);
+		initialisationPlateau();
 	}
 	
 	
-	public void initialisationPlateau(int nbTortues) {
+	public void initialisationPlateau() {
 		
 		
 		

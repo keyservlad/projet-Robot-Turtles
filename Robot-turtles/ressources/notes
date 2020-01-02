@@ -36,10 +36,6 @@ drag and drop (video pas ouf) : https://www.youtube.com/watch?v=HYqODAQ2lQw	(on 
 
 
 
-
-passer isTourFini de Game à true pour passer au joueur suivant
-
-
 les etats de la game : 
 - choix nombre joueurs + limite de score
 - joueur 1:
@@ -56,3 +52,8 @@ les etats de la game :
 
 --> pour la suite : 
 	on va utiliser les drawPanel pour afficher les panels selon l'etat de la game
+	
+	
+amelioration : fusionner les classer Fenetre menu et FenetreJeu avec un removeall() puis affichage de la fenetre correspondante, à faire dans une méthode et non plus dans le constructeur
+
+TODO next : faire les tours des joueurs avec l'enum, puis ajouter les boutons dans le buttonPanel, ajouter les etapes d'un tour dans l'enum, la differentiation entre les joueur se fera au moment de draw grace à la variable tourDuJoueur
