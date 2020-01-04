@@ -11,7 +11,7 @@ import com.turtles.Game;
 
 public class ProgrammePanel extends JPanel{
 	
-	private static final Dimension HAND_PANEL_DIMENSION = new Dimension(400, 200);
+	private static final Dimension PROGRAMME_PANEL_DIMENSION = new Dimension(450, 157);
 	
 	private CardPanel[] handCards;
 	
@@ -21,7 +21,7 @@ public class ProgrammePanel extends JPanel{
 		
 		//creationCartes();
 		
-		setPreferredSize(HAND_PANEL_DIMENSION);
+		setPreferredSize(PROGRAMME_PANEL_DIMENSION);
 		validate();
 	}
 	

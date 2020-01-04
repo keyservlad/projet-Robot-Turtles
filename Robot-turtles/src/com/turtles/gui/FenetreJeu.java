@@ -35,13 +35,13 @@ public class FenetreJeu extends JFrame implements ActionListener, KeyListener{ /
 	
 	
 	private static BoardPanel boardPanel = null;
-	private static CardsPanel cardsPanel;
+	private static SouthPanel southPanel;
 	
 	public static MyGlassPane glass = new MyGlassPane();
 	
-	public static OpponentsPanel opponentsPanel = new OpponentsPanel();
-	public static ScoringPanel scoringPanel = new ScoringPanel();
-	public static ButtonsPanel buttonsPanel = new ButtonsPanel();
+	public static NorthPanel northPanel = new NorthPanel();
+	public static WestPanel westPanel = new WestPanel();
+	public static EastPanel eastPanel = new EastPanel();
 	
 	
 	
@@ -87,15 +87,15 @@ public class FenetreJeu extends JFrame implements ActionListener, KeyListener{ /
 		//gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		boardPanel = new BoardPanel();
-		cardsPanel = new CardsPanel();
+		southPanel = new SouthPanel();
 		
 		
 		
 		this.add(boardPanel, BorderLayout.CENTER);
-		this.add(cardsPanel, BorderLayout.SOUTH);
-		this.add(buttonsPanel, BorderLayout.EAST);
-		this.add(opponentsPanel, BorderLayout.NORTH);
-		this.add(scoringPanel, BorderLayout.WEST);
+		this.add(southPanel, BorderLayout.SOUTH);
+		this.add(eastPanel, BorderLayout.EAST);
+		this.add(northPanel, BorderLayout.NORTH);
+		this.add(westPanel, BorderLayout.WEST);
 		
 		
 		this.setGlassPane(glass);
@@ -278,8 +278,8 @@ public class FenetreJeu extends JFrame implements ActionListener, KeyListener{ /
 		return boardPanel;
 	}
 	
-	public static CardsPanel getCardsPanel() {
-		return cardsPanel;
+	public static SouthPanel getCardsPanel() {
+		return southPanel;
 	}
 
 	@Override

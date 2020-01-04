@@ -23,7 +23,7 @@ public class BoardPanel extends JPanel{
 	    }                
 	  }
 	
-	private static final Dimension BOARD_PANEL_DIMENSION = new Dimension(400,400);
+	private static final Dimension BOARD_PANEL_DIMENSION = new Dimension(450, 450);
 	
 	
 	final TilePanel[][] boardTiles;

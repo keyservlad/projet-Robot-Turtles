@@ -51,11 +51,11 @@ mesures:
 		
 	- southPanel : 450 * 315
 		- maMainPanel : 450 * 157
-		- monBoardPanel : 450 * 157
+		- monProgrammePanel : 450 * 157
 		
 	- westPanel : 735 * 1080
 		- enemyPanels ...
-			- enemyBoardPanel
+			- enemyProgrammePanel
 			- enemyInventory (lui meme un panel avec une image de fond, une image du mur et un nombre)
 		
 	- eastPanel : 735 * 1080
