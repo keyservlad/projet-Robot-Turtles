@@ -32,6 +32,9 @@ public class CardPanel extends JPanel{
 	
 	private int X, Y, initialX, initialY;
 	
+	private MouseGlassListener ml;
+	private MouseGlassMotionListener mml;
+	
 	CardPanel(final String typePanel, final int posCard, int tourDuJoueur){
 		
 		super(new GridBagLayout());
@@ -47,87 +50,6 @@ public class CardPanel extends JPanel{
 		}
 		
 		
-		addMouseListener(new MouseGlassListener(FenetreJeu.glass));
-		addMouseMotionListener(new MouseGlassMotionListener(FenetreJeu.glass));
-		
-/*
-		addMouseListener(new MouseListener() {
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-				
-				
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-	
-				initialX = e.getComponent().getX();
-				initialY = e.getComponent().getY();
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				
-				X = e.getX();
-				Y = e.getY();
-			}
-
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				e.getComponent().setLocation(initialX, initialY);
-				
-			}
-			
-		});
-		
-		addMouseMotionListener(new MouseMotionListener() {
-
-			@Override
-			public void mouseDragged(MouseEvent e) {
-				e.getComponent().setLocation(e.getX() + e.getComponent().getX() - X, e.getY() + e.getComponent().getY() - Y);
-				
-				System.out.println(e.getY() + e.getComponent().getY());
-				
-				if (e.getY() + e.getComponent().getY() > 10000 ) {
-					//refaire les limites et ajouter l'action de la carte
-					switch(FenetreJeu.typeDeLaCarteSelectionnee(e.getComponent())) {
-					case "Bleue":
-						System.out.println("bleu"); // TODO repprendre ici, refaire les cartes au photoshop, passer le jpanel handpanel devant le boardpanel, GUI part VII, grossir la carte quand on passe dessus, relier Carte avec la cardPanel en passant par toutes les cartes de la main je pense, puis faire l'action de la carte associee au joueur
-						break;
-						
-					case "Jaune":
-						System.out.println("jaune");
-						break;
-						
-					case "Violette":
-						System.out.println("violette");
-						break;
-						
-					case "Laser":
-						System.out.println("laser");
-						break;
-					}
-					//FenetreJeu.removeCarte(e.getComponent()); TODO
-				}
-				
-			}
-
-			@Override
-			public void mouseMoved(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
-		*/
 		validate();
 	}
 
@@ -206,6 +128,19 @@ public class CardPanel extends JPanel{
 	
 	public void setIsMovable(boolean isMovable) {
 		this.isMovable = isMovable;
+	}
+	
+	public void removeMouseListeners() {
+		this.removeMouseListener(ml);
+		this.removeMouseMotionListener(mml);
+	}
+	
+	public void addMouseListeners() {
+		this.ml = new MouseGlassListener(Fenetre.glass);
+		this.mml = new MouseGlassMotionListener(Fenetre.glass);
+		
+		this.addMouseListener(this.ml);
+		this.addMouseMotionListener(this.mml);
 	}
 	
 	

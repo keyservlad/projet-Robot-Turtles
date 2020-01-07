@@ -3,10 +3,11 @@ package com.turtles.gui;
 public enum EtatPartie {
 	
 	DEBUTPARTIE,
+	DESIGNATIONJOUEUR,
 	CHOIXACTION,
-	JOUEUR,
-	INVOQUER,
-	PLACER,
+	COMPLETER,
+	CONSTRUIRE,
+	EXECUTER,
 	FINPARTIE;
 	
 	

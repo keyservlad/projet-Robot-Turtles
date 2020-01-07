@@ -1,5 +1,5 @@
 package com.turtles;
-import com.turtles.gui.FenetreJeu;
+import com.turtles.gui.Fenetre;
 
 public class Main {
 	

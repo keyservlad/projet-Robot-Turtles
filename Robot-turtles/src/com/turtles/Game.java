@@ -3,8 +3,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.swing.JPanel;
+
 import com.turtles.gui.EtatPartie;
-import com.turtles.gui.FenetreJeu;
+import com.turtles.gui.Fenetre;
 
 public class Game {
 	
@@ -28,12 +30,17 @@ public class Game {
 	
 	public static EtatPartie etatPartie = EtatPartie.DEBUTPARTIE;
 	
+	public static Fenetre fenetre;
+	
+	
+	private Thread t;
+	
 	
 	
 	public void run() {
 		
 		plateau = new Plateau();
-		FenetreJeu fenetre = new FenetreJeu();
+		fenetre = new Fenetre();
 		
 		
 		
@@ -44,93 +51,60 @@ public class Game {
 		}
 		
 		creationTortues();
-		//fenetre.hide();
 		tourDuJoueur = 0;
-		//new FenetreJeu();
-		fenetre.afficherFenetreJeu();
 		
 		while(true) {
 			while(tourDuJoueur < nbTortues) {
+				fenetre.afficherEcranTourDuJoueur();
 				
-				//etatPartie = EtatPartie.CHOIXACTION;
-				//faire un fonction changement de joueur?
+				while(etatPartie == EtatPartie.DESIGNATIONJOUEUR) {
+					fenetre.getContentPane().repaint();
+				}
+				
+				fenetre.afficherFenetreJeu();
+				
+				etatPartie = EtatPartie.CHOIXACTION;
+				fenetre.passerEnChoixDuJoueur();
 				
 				while(etatPartie == EtatPartie.CHOIXACTION) {
+					t = new Thread();
+					t.start();
 					
-					// choix action
+					
+				}
+				t.stop();
+				fenetre.otherGlassPan = new JPanel();
+				
+				
+				while(etatPartie == EtatPartie.COMPLETER) {
+					fenetre.repaint();
 					
 				}
 				
-				while(etatPartie == EtatPartie.PLACER) {
-					
-					//invoquer
+				while(etatPartie == EtatPartie.CONSTRUIRE) {
+
 				}
-				
-				while(etatPartie == EtatPartie.INVOQUER) {
+
+				if (etatPartie == EtatPartie.EXECUTER) {		// c'est ici qu'on met la condition de victoire
 					
+					fenetre.invocation();
+	
+
 				}
-				
-				while(etatPartie == EtatPartie.PLACER) {
-					
+
+				fenetre.repaint();
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
 				}
-				
-				
-				
-				System.out.println("aa");
-				
 				tourDuJoueur++;
-				
+
 			}
 			tourDuJoueur = 0;
 		}
 		
 		
-		/*
-		plateau = new Plateau();
-		creationTortues(choixNbJoueurs());
-		
-		
-		
-		int tourDuJoueur = 0;
-		//while (true) {
-			while(tourDuJoueur < nbTortues) {
-				System.out.println("\nC'est au tour de la tortue " + tortues.get(tourDuJoueur).getColor());
-				afficheLaMainLePlateauEtLeBoard(tourDuJoueur);
-				
-				choixMultiple(tourDuJoueur);
-				
-				finDeTour(tourDuJoueur);
-				
-				tortueRouge.actionLaser();
-				
-				tortueVerte.avance();
-				tortueVerte.avance();
-				tortueVerte.avance();
-				tortueVerte.avance();
-				tortueVerte.turnright();
-				tortueVerte.avance();
-				tortueVerte.avance();
-				tortueVerte.avance();
-				tortueVerte.avance();
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				tourDuJoueur++;
-			}
-			tourDuJoueur = 0;
-		//}
-		
-		
-		
-		
-		
-		*/
 		
 	}
 	

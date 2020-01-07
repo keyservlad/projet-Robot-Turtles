@@ -26,6 +26,7 @@ public class SouthPanel extends JPanel {
 		setPreferredSize(SOUTH_PANEL_DIMENSION);
 
 		validate();
+		repaint();
 	}
 
 	public void drawHandProgramme() {
@@ -33,8 +34,8 @@ public class SouthPanel extends JPanel {
 		handPanel.drawCards();
 		programmePanel.drawCards();
 
-		
-
 	}
+	
+	
 
 }

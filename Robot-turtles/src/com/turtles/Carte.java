@@ -1,7 +1,7 @@
 package com.turtles;
 import java.util.ArrayList;
 
-import com.turtles.gui.FenetreJeu;
+import com.turtles.gui.Fenetre;
 
 public class Carte {
 	
@@ -25,8 +25,6 @@ public class Carte {
 	
 	public void invocation(Tortue tortue) {
 		
-		// TODO faire passer la carte de la main au board (peut etre)
-		
 		switch (this.type) {
 		case "Bleue":
 			actionCarteBleue(tortue);
@@ -44,7 +42,7 @@ public class Carte {
 			actionCarteLaser(tortue);
 			break;
 		}
-		FenetreJeu.getBoardPanel().drawBoard();		// redessine le board à chaque fois qu'une action est effectuée
+		Fenetre.getBoardPanel().drawBoard();		// redessine le board à chaque fois qu'une action est effectuée
 	}
 	
 	

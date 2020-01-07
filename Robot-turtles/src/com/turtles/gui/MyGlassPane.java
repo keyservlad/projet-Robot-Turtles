@@ -17,14 +17,10 @@ public class MyGlassPane extends JPanel {
 	private BufferedImage img;
 	// Les coordonnées de l'image
 	private Point location;
-	// La transparence de notre glace
-	private Composite transparence;
 
 	public MyGlassPane() {
 		// Afin de ne peindre que ce qui nous intéresse
 		setOpaque(false);
-		// On définit la transparence
-		transparence = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f);
 	}
 
 	public void setLocation(Point location) {
@@ -36,13 +32,15 @@ public class MyGlassPane extends JPanel {
 	}
 
 	public void paintComponent(Graphics g) {
+		
+		
 		// Si on n'a pas d'image à dessiner, on ne fait rien…
 		if (img == null)
 			return;
 
 		// Dans le cas contraire, on dessine l'image souhaitée
-		Graphics2D g2d = (Graphics2D) g;
-		g2d.setComposite(transparence);
+		
+		Graphics2D g2d = (Graphics2D)g;
 		g2d.drawImage(img, (int) (location.getX() - (img.getWidth(this) / 2)),
 				(int) (location.getY() - (img.getHeight(this) / 2)), null);
 	}

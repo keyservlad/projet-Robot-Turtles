@@ -24,9 +24,11 @@ public class MouseGlassListener extends MouseAdapter {
 	}
 
 	public void mousePressed(MouseEvent event) {
+		
 		// On récupère le composant pour en déduire sa position
 		Component composant = event.getComponent();
-		if (FenetreJeu.isCardMovable(composant) == false) {
+		if (Fenetre.isCardMovable(composant) == false) {
+			System.out.println("carte non obugeable");
 			return;
 		}
 		
@@ -47,22 +49,20 @@ public class MouseGlassListener extends MouseAdapter {
 		// On passe les données qui vont bien à notre GlassPane
 		myGlass.setLocation(location);
 		myGlass.setImage(image);
+		
 
 		// On n'oublie pas de dire à notre GlassPane de s'afficher
 		myGlass.setVisible(true);
+		
+		
+		
 	}
 
 	public void mouseReleased(MouseEvent event) {
-		// ---------------------------------------------------------------------
-		// On implémente le transfert lorsqu'on relâche le bouton de souris
-		// Ceci afin de ne pas supplanter le fonctionnement du déplacement
-		JComponent lab = (JComponent) event.getSource();
-		//TransferHandler handle = lab.getTransferHandler();
 		
-
 		// On récupère le composant pour en déduire sa position
 		Component composant = event.getComponent();
-		if (FenetreJeu.isCardMovable(composant) == false) {
+		if (Fenetre.isCardMovable(composant) == false) {
 			return;
 		}
 		composant.show();
@@ -82,7 +82,7 @@ public class MouseGlassListener extends MouseAdapter {
 		myGlass.setVisible(false);
 		
 		
-		String typeCarteSelect = FenetreJeu.typeDeLaCarteSelectionnee(composant);
+		String typeCarteSelect = Fenetre.typeDeLaCarteSelectionnee(composant);
 		if (location.getY() < 700) {		// TODO il faudra probablement redefinir cette limite
 			
 			for (Carte carte : Game.tortues.get(Game.tourDuJoueur).getMain().getCardsList()) {
@@ -105,9 +105,10 @@ public class MouseGlassListener extends MouseAdapter {
 				i++;
 			}
 			
-			FenetreJeu.getCardsPanel().drawHandProgramme();
+			Fenetre.getCardsPanel().drawHandProgramme();		//TODO changer le cardsPanel
 			
-			
+			Game.fenetre.ajouterListeners();
+			Game.etatPartie = EtatPartie.DESIGNATIONJOUEUR;
 		}
 
 	}

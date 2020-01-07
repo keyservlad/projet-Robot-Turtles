@@ -16,10 +16,11 @@ public class ProgrammePanel extends JPanel{
 	private CardPanel[] handCards;
 	
 	ProgrammePanel(){
-		super(new FlowLayout(FlowLayout.CENTER, 5, 50));
+		//super(new FlowLayout(FlowLayout.CENTER, 5, 50)); (alignment, hgap, vgap)
+		super(new FlowLayout());
 		setBackground(new Color(1.0f, 1.0f, 1.0f, 0.0f));
 		
-		//creationCartes();
+		creationCartes();
 		
 		setPreferredSize(PROGRAMME_PANEL_DIMENSION);
 		validate();
@@ -31,15 +32,18 @@ public class ProgrammePanel extends JPanel{
 		validate();
 		repaint();
 	}
-	
+
 	public void creationCartes() {
-		this.handCards = new CardPanel[Game.tortues.get(Game.tourDuJoueur).getProgramme().getCardsList().size()];
-		
-		for (int i = 0; i < Game.tortues.get(Game.tourDuJoueur).getProgramme().getCardsList().size() ; i++) {
-			CardPanel cardPanel = new CardPanel("Programme", i, Game.tourDuJoueur);
-			cardPanel.setIsMovable(false);
-			this.handCards[i] = cardPanel;
-			add(cardPanel);
+		if (Game.tortues.get(Game.tourDuJoueur).getProgramme().getCardsList().size() != 0) {
+			this.handCards = new CardPanel[Game.tortues.get(Game.tourDuJoueur).getProgramme().getCardsList().size()];
+
+			for (int i = 0; i < Game.tortues.get(Game.tourDuJoueur).getProgramme().getCardsList().size(); i++) {
+				CardPanel cardPanel = new CardPanel("Programme", i, Game.tourDuJoueur);
+				cardPanel.setIsMovable(false);
+				this.handCards[i] = cardPanel;
+				add(cardPanel);
+			}
 		}
+
 	}
 }
