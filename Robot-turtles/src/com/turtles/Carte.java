@@ -6,6 +6,7 @@ import com.turtles.gui.Fenetre;
 public class Carte {
 	
 	private String type;
+	private boolean isVisible = true;
 	
 	public Carte() {
 		
@@ -22,6 +23,16 @@ public class Carte {
 	public String getType() {
 		return this.type;
 	}
+	
+	public void setIsVisible(boolean isVisible) {
+		this.isVisible= isVisible;
+	}
+	
+	public boolean getIsVisible() {
+		return this.isVisible;
+	}
+	
+	
 	
 	public void invocation(Tortue tortue) {
 		

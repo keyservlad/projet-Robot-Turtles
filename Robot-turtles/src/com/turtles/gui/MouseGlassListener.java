@@ -82,30 +82,33 @@ public class MouseGlassListener extends MouseAdapter {
 		myGlass.setVisible(false);
 		
 		
-		String typeCarteSelect = Fenetre.typeDeLaCarteSelectionnee(composant);
-		if (location.getY() < 700) {		// TODO il faudra probablement redefinir cette limite
-			
-			for (Carte carte : Game.tortues.get(Game.tourDuJoueur).getMain().getCardsList()) {
-				if (carte.getType().contentEquals(typeCarteSelect)) {
-					Game.tortues.get(Game.tourDuJoueur).getProgramme().ajouterCarte(carte);
-					
-					break;
-					
-				}
-			}
+		int posCarteSelect = Fenetre.posDeLaCarteSelectionnee(composant);
+		System.out.println(posCarteSelect);
+		if (location.getY() < 500) {		// TODO il faudra probablement redefinir cette limite
 			
 			int i = 0;
 			for (Carte carte : Game.tortues.get(Game.tourDuJoueur).getMain().getCardsList()) {
-				if (carte.getType().contentEquals(typeCarteSelect)) {
-					
-					Game.tortues.get(Game.tourDuJoueur).getMain().retirerUneCarte(i);
+				if (posCarteSelect == i) {
+					Game.tortues.get(Game.tourDuJoueur).getProgramme().ajouterCarte(carte);
+					carte.setIsVisible(false);
 					break;
+					
 				}
-				
 				i++;
 			}
 			
-			Fenetre.getCardsPanel().drawHandProgramme();		//TODO changer le cardsPanel
+			int j = 0;
+			for (Carte carte : Game.tortues.get(Game.tourDuJoueur).getMain().getCardsList()) {
+				if (posCarteSelect == j) {
+					
+					Game.tortues.get(Game.tourDuJoueur).getMain().retirerUneCarte(j);
+					break;
+				}
+				
+				j++;
+			}
+			
+			Fenetre.getSouthPanel().drawHandProgramme();		//TODO changer le cardsPanel
 			
 			Game.fenetre.ajouterListeners();
 			Game.etatPartie = EtatPartie.DESIGNATIONJOUEUR;

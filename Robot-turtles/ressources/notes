@@ -74,6 +74,12 @@ idem pour le board (corriger sur le programme existant)
 replacer les boutons du choix du joueur ou les rendre plus clairs
 pouvoir faire glisser le mur sur la case qu'on veut (trop stylé)
 
+ne pas oublier à la fin si on veut garder sa main ou non
+
+bug dans un cas tres precis : si on invoque deux cartes (pas plus) de la meme couleur, qui etait cote à cote dans la main, 
+alors elles deviennent visibles en meme temps (probleme vennant du programme en console), j'ai passé deux heures pour regler seulement une partie du pb
+
+
 
 
 

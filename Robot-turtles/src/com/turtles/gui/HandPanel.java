@@ -41,7 +41,7 @@ public class HandPanel extends JPanel{
 		this.handCards = new CardPanel[Game.tortues.get(Game.tourDuJoueur).getMain().getCardsList().size()];
 		
 		for (int i = 0; i < Game.tortues.get(Game.tourDuJoueur).getMain().getCardsList().size(); i++) {
-			CardPanel cardPanel = new CardPanel("Main", i, Game.tourDuJoueur);
+			CardPanel cardPanel = new CardPanel(i, Game.tourDuJoueur, true, "Hand");
 			
 			this.handCards[i] = cardPanel;
 			add(cardPanel);

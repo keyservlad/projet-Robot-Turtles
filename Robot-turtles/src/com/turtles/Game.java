@@ -62,6 +62,11 @@ public class Game {
 				}
 				
 				fenetre.afficherFenetreJeu();
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e1) {
+					e1.printStackTrace();
+				}
 				
 				etatPartie = EtatPartie.CHOIXACTION;
 				fenetre.passerEnChoixDuJoueur();
@@ -90,6 +95,10 @@ public class Game {
 					fenetre.invocation();
 	
 
+				}
+				
+				while(etatPartie == EtatPartie.FINDETOUR) {
+					
 				}
 
 				fenetre.repaint();

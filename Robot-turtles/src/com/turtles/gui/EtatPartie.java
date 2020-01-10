@@ -8,6 +8,7 @@ public enum EtatPartie {
 	COMPLETER,
 	CONSTRUIRE,
 	EXECUTER,
+	FINDETOUR,
 	FINPARTIE;
 	
 	

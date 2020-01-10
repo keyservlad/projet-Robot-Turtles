@@ -22,6 +22,7 @@ public class CardPanel extends JPanel{
 	private final int posCard;
 	private String type;
 	private boolean isMovable = true;
+	private boolean isVisible = true;
 	
 	private final String BlueCardIconPath = "./ressources/images/cards/BlueCard.png";
 	private final String LaserIconPath = "./ressources/images/cards/LaserCard.png";
@@ -35,18 +36,24 @@ public class CardPanel extends JPanel{
 	private MouseGlassListener ml;
 	private MouseGlassMotionListener mml;
 	
-	CardPanel(final String typePanel, final int posCard, int tourDuJoueur){
+	CardPanel(final int posCard, int tourDuJoueur, boolean isVisible, String panel){
 		
 		super(new GridBagLayout());
 		
 		this.posCard = posCard;
+		this.isVisible = isVisible;
 		
 		setPreferredSize(CARD_PANEL_DIMENSION);
 		setBackground(new Color(1.0f, 1.0f, 1.0f ,0.0f));
-		if (typePanel.contentEquals("Programme")){
+		if (this.isVisible == false){
 			assignImage();
 		}else {
-			assignImage(Game.tortues.get(tourDuJoueur).getMain().getCardsList().get(posCard));
+			if (panel.contentEquals("Hand")) {
+				assignImage(Game.tortues.get(tourDuJoueur).getMain().getCardsList().get(posCard));
+			}else {
+				assignImage(Game.tortues.get(tourDuJoueur).getProgramme().getCardsList().get(posCard));
+			}
+			
 		}
 		
 		
@@ -67,7 +74,7 @@ public class CardPanel extends JPanel{
 		
 	}
 
-	private void assignImage(Carte carte) {
+	public void assignImage(Carte carte) {
 		this.removeAll();
 		
 		
@@ -109,6 +116,10 @@ public class CardPanel extends JPanel{
 	public String getType() {
 		return type;
 	}
+	
+	public int getPosCard() {
+		return this.posCard;
+	}
 
 	public void setType(String type) {
 		this.type = type;
@@ -128,6 +139,14 @@ public class CardPanel extends JPanel{
 	
 	public void setIsMovable(boolean isMovable) {
 		this.isMovable = isMovable;
+	}
+	
+	public boolean getIsVisible() {
+		return this.isVisible;
+	}
+	
+	public void setIsVisible(boolean isVisible) {
+		this.isVisible = isVisible;
 	}
 	
 	public void removeMouseListeners() {

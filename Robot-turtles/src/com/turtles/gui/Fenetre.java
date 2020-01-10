@@ -158,7 +158,7 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener{ // l
 			public void stateChanged(ChangeEvent e) {
 				// modifie la valeur du nombre de joueurs selon l'etat du slider
 				Game.nbTortues = (int) ((JSlider) e.getSource()).getValue();
-				System.out.println(Game.nbTortues);
+				
 				
 			}
 		});
@@ -340,9 +340,9 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener{ // l
 	}
 
 	
-	public static String typeDeLaCarteSelectionnee(Component component) {
+	public static int posDeLaCarteSelectionnee(Component component) {
 		CardPanel cardPanel = (CardPanel)component;
-		return cardPanel.getType();
+		return cardPanel.getPosCard();
 	}
 	
 	public static boolean isCardMovable(Component component) {
@@ -395,7 +395,7 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener{ // l
 		return boardPanel;
 	}
 	
-	public static SouthPanel getCardsPanel() {
+	public static SouthPanel getSouthPanel() {
 		return southPanel;
 	}
 
@@ -435,9 +435,34 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener{ // l
 	}
 	
 	public void invocation() {		//TODO condition de victoire
+		
+		
 		for (Carte carte : Game.tortues.get(Game.tourDuJoueur).getProgramme().getCardsList()) {
-			// TODO
+			
+			carte.setIsVisible(true);
+			this.getSouthPanel().getProgrammePanel().drawCards();
+			this.repaint();
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			
+			carte.invocation(Game.tortues.get(Game.tourDuJoueur));
+			this.repaint();
 		}
+		
+		Game.tortues.get(Game.tourDuJoueur).getProgramme().getCardsList().clear();
+
+		this.getSouthPanel().getProgrammePanel().drawCards();
+		this.repaint();
+		
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	

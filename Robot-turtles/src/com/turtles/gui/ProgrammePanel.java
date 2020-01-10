@@ -13,7 +13,7 @@ public class ProgrammePanel extends JPanel{
 	
 	private static final Dimension PROGRAMME_PANEL_DIMENSION = new Dimension(450, 157);
 	
-	private CardPanel[] handCards;
+	private CardPanel[] programmeCards;
 	
 	ProgrammePanel(){
 		//super(new FlowLayout(FlowLayout.CENTER, 5, 50)); (alignment, hgap, vgap)
@@ -35,15 +35,26 @@ public class ProgrammePanel extends JPanel{
 
 	public void creationCartes() {
 		if (Game.tortues.get(Game.tourDuJoueur).getProgramme().getCardsList().size() != 0) {
-			this.handCards = new CardPanel[Game.tortues.get(Game.tourDuJoueur).getProgramme().getCardsList().size()];
+			this.programmeCards = new CardPanel[Game.tortues.get(Game.tourDuJoueur).getProgramme().getCardsList().size()];
 
 			for (int i = 0; i < Game.tortues.get(Game.tourDuJoueur).getProgramme().getCardsList().size(); i++) {
-				CardPanel cardPanel = new CardPanel("Programme", i, Game.tourDuJoueur);
+				CardPanel cardPanel;
+				
+				if (Game.tortues.get(Game.tourDuJoueur).getProgramme().getCardsList().get(i).getIsVisible() == false) {
+					cardPanel = new CardPanel(i, Game.tourDuJoueur, false, "Programme");
+				}else {
+					cardPanel = new CardPanel(i, Game.tourDuJoueur, true, "Programme");
+				}
+				
 				cardPanel.setIsMovable(false);
-				this.handCards[i] = cardPanel;
+				this.programmeCards[i] = cardPanel;
 				add(cardPanel);
 			}
 		}
 
+	}
+	
+	public CardPanel[] getProgrammeCards() {
+		return this.programmeCards;
 	}
 }

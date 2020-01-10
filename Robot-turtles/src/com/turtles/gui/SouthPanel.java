@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 public class SouthPanel extends JPanel {
 
 	public static HandPanel handPanel;
-	public static ProgrammePanel programmePanel;
+	public ProgrammePanel programmePanel;
 	
 	private static final Dimension SOUTH_PANEL_DIMENSION = new Dimension(450, 315);
 
@@ -34,6 +34,10 @@ public class SouthPanel extends JPanel {
 		handPanel.drawCards();
 		programmePanel.drawCards();
 
+	}
+	
+	public ProgrammePanel getProgrammePanel() {
+		return this.programmePanel;
 	}
 	
 	
