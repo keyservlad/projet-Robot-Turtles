@@ -257,6 +257,14 @@ public class Tortue {
 		
 	}
 	
+	public int nbMurs() {
+		return this.inventaire.get("murDePierre");
+	}
+	
+	public int nbGlaces() {
+		return this.inventaire.get("murDeGlace");
+	}
+	
 	
 	
 	

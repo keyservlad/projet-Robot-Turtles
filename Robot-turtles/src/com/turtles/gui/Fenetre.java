@@ -44,7 +44,7 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener{ // l
 	
 	public static NorthPanel northPanel = new NorthPanel();
 	public static WestPanel westPanel = new WestPanel();
-	public static EastPanel eastPanel = new EastPanel();
+	public EastPanel eastPanel = new EastPanel();
 	
 	public JPanel otherGlassPan;
 	
@@ -66,6 +66,38 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener{ // l
 		
 		afficherFenetreMenu();
 		
+		addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				System.out.println(e.getX() + "  " + e.getY());
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		
 		
 	}
@@ -463,6 +495,10 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener{ // l
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public EastPanel getEastPanel() {
+		return this.eastPanel;
 	}
 	
 	

@@ -28,8 +28,8 @@ public class MouseGlassMotionListener extends MouseAdapter {
 		SwingUtilities.convertPointToScreen(p, c);
 		SwingUtilities.convertPointFromScreen(p, myGlass);
 		myGlass.setLocation(p);
-		
-		
+
 		myGlass.repaint();
+
 	}
 }

@@ -62,6 +62,7 @@ public class Game {
 				}
 				
 				fenetre.afficherFenetreJeu();
+				//fenetre.getEastPanel().getInstructionPanel().setInstructions("Paul est con, vraiment tres con");
 				try {
 					Thread.sleep(500);
 				} catch (InterruptedException e1) {
@@ -83,12 +84,14 @@ public class Game {
 				
 				while(etatPartie == EtatPartie.COMPLETER) {
 					fenetre.repaint();
-					
 				}
 				
+				// TODO ajouter les listeners
 				while(etatPartie == EtatPartie.CONSTRUIRE) {
+					fenetre.repaint();
 
 				}
+				// TODO enlever les listeners
 
 				if (etatPartie == EtatPartie.EXECUTER) {		// c'est ici qu'on met la condition de victoire
 					

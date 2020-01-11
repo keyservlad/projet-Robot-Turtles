@@ -80,7 +80,8 @@ bug dans un cas tres precis : si on invoque deux cartes (pas plus) de la meme co
 alors elles deviennent visibles en meme temps (probleme vennant du programme en console), j'ai passé deux heures pour regler seulement une partie du pb
 
 
-
+changer les polices partout
+refresh les valeurs des murs quand elles sont modifiaient
 
 
 
