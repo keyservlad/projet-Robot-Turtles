@@ -9,11 +9,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.turtles.Game;
+
 public class RessourcesPanel extends JPanel{
 	
 	private JPanel deckPanel=new JPanel();
 	private InventairePanel inventairePanel= new InventairePanel();
-	private final String LegendCardBack = "./ressources/images/cards/legendCardBack.png";
+	private final String LegendDeck = "./ressources/images/cards/legendDeck.png";
+	private final String LegendDeckVide = "./ressources/images/cards/legendDeckVide.png";
 	private Dimension RESSOURCES_PANEL_DIMENSION = new Dimension(735, 175);
 	
 	public RessourcesPanel() {
@@ -25,7 +28,13 @@ public class RessourcesPanel extends JPanel{
 		
 		deckPanel.removeAll();
 		try {
-			deckPanel.add(new JLabel(new ImageIcon(ImageIO.read(new File(LegendCardBack)))));
+			
+			if(Game.tortues.get(Game.tourDuJoueur).getDeck().getCardsList().size() > 20) {
+				deckPanel.add(new JLabel(new ImageIcon(ImageIO.read(new File(LegendDeck)))));
+			}else {
+				deckPanel.add(new JLabel(new ImageIcon(ImageIO.read(new File(LegendDeckVide)))));
+			}
+			
 			
 		} catch (IOException e) {
 			
@@ -41,7 +50,7 @@ public class RessourcesPanel extends JPanel{
 		
 		
 		
-		deckPanel.setSize(100,140);
+		deckPanel.setSize(150,170);
 		
 		
 		add(deckPanel);

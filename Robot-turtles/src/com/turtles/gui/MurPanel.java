@@ -15,21 +15,22 @@ public class MurPanel extends JPanel{
 		switch (type) {
 		case "Glace" : 
 			setBackground(Color.blue);
+			this.setName("GlacePanel");
 			break;
 			
 			
 		case "Pierre" : 
 			setBackground(Color.gray);
+			this.setName("MurPanel");
 			break;
 			
 			
 		}
-		this.setName("MurPanel");
+		
 		this.ml = new MouseGlassListener(Fenetre.glass);
 		this.mml = new MouseGlassMotionListener(Fenetre.glass);
 		
-		//this.addMouseListener(this.ml);
-		//this.addMouseMotionListener(this.mml);
+		this.addMouseListeners();
 		
 		
 		setPreferredSize(MUR_PANEL_DIMENSION);

@@ -62,7 +62,6 @@ public class Game {
 				}
 				
 				fenetre.afficherFenetreJeu();
-				//fenetre.getEastPanel().getInstructionPanel().setInstructions("Paul est con, vraiment tres con");
 				try {
 					Thread.sleep(500);
 				} catch (InterruptedException e1) {
@@ -312,7 +311,7 @@ public class Game {
 				System.out.println("plus de mur!");
 				
 			}else {
-				construireMur(tourDuJoueur);
+				//construireMur(tourDuJoueur);
 			}
 			
 			break;
@@ -387,13 +386,12 @@ public class Game {
 		tortues.get(tourDuJoueur).invoquerUneCarte(indexToCarteInHand(saisieJoueur, tourDuJoueur)); // invoque une carte sur le programme et le retire de la main
 	}
 	
-	public void construireMur(int tourDuJoueur) {
-		int x;
-		int y;
+	public static void construireMur(int xScreen, int yScreen, char symbole) {
+		
+		int x = 0;
+		int y = 0;
 		int j = 0;
 		boolean isRest = false;
-		int choixMur;
-		char symbole = ' ';
 
 		for (String i : tortues.get(tourDuJoueur).getInventaire().keySet()) {
 			if (tortues.get(tourDuJoueur).getInventaire().get(i) != 0) {
@@ -404,27 +402,48 @@ public class Game {
 		}
 		
 		if (isRest){
-			do {
-				choixMur = Integer.parseInt(scanner.nextLine()); // faire le choix non pas avec des int mais avec des strings
-			}while (choixMur != 0 && choixMur != 1);  // bug mais osef car il va se barrer avec l'IG
 			
-			symbole = attributionSymbole(choixMur);
+			if (yScreen > 343 && yScreen <= 395) {
+				y = 0;
+			} else if (yScreen > 395 && yScreen <= 446) {
+				y = 1;
+			} else if (yScreen > 446 && yScreen <= 500) {
+				y = 2;
+			} else if (yScreen > 500 && yScreen <= 551) {
+				y = 3;
+			} else if (yScreen > 551 && yScreen <= 604) {
+				y = 4;
+			} else if (yScreen > 604 && yScreen <= 655) {
+				y = 5;
+			} else if (yScreen > 655 && yScreen <= 700) {
+				y = 6;
+			} else if (yScreen > 700 && yScreen <= 758) {
+				y = 7;
+			}
+
+			if (xScreen > 740 && xScreen <= 794) {
+				x = 0;
+			} else if (xScreen > 794 && xScreen <= 850) {
+				x = 1;
+			} else if (xScreen > 850 && xScreen <= 905) {
+				x = 2;
+			} else if (xScreen > 905 && xScreen <= 960) {
+				x = 3;
+			} else if (xScreen > 960 && xScreen <= 1015) {
+				x = 4;
+			} else if (xScreen > 1015 && xScreen <= 1070) {
+				x = 5;
+			} else if (xScreen > 1070 && xScreen <= 1125) {
+				x = 6;
+			} else if (xScreen > 1125 && xScreen <= 1180) {
+				x = 7;
+			}
 			
-			do {
-				do {
-					System.out.println("entrer l'abscisse : ");
-					x = Integer.parseInt(scanner.nextLine());
-
-				} while (x < 0 || x > 7);
-
-				do {
-					System.out.println("entrer l'ordonnée : ");
-					y = Integer.parseInt(scanner.nextLine());
-				} while (y < 0 || y > 7);
-
-			} while (isMurValide(x, y) == false);
+			if (isMurValide(x, y)) {
+				plateau.setPlateau(x, y, symbole);
+			}
 			
-			plateau.setPlateau(x, y, symbole);
+			/*
 			switch (choixMur) {
 			case 0:
 				tortues.get(tourDuJoueur).retirerMurDeGlaceInventaire();
@@ -433,11 +452,14 @@ public class Game {
 			case 1:
 				tortues.get(tourDuJoueur).retirerMurDePierreInventaire();
 			}
-			
+			*/
 			plateau.updatePlateau();
 			
 			
 		}
+		
+		
+		
 
 		
 
@@ -455,7 +477,7 @@ public class Game {
 		return ' ';
 	}
 	
-	public boolean isMurValide(int x, int y) {
+	public static boolean isMurValide(int x, int y) {
 		
 		if (plateau.getPlateau()[y][x] == ' ') {
 			return true;

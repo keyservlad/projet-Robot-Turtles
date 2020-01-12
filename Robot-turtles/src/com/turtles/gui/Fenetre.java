@@ -60,11 +60,10 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener{ // l
 
 	
 	public Fenetre() {
-		super("Robot Turtles");
-		
-		
+		super("Robot Turtles");	
 		
 		afficherFenetreMenu();
+		
 		
 		addMouseListener(new MouseListener() {
 			
