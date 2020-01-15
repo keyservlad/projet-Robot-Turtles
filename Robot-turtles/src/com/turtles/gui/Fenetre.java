@@ -64,7 +64,7 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener{ // l
 		
 		afficherFenetreMenu();
 		
-		
+		/*
 		addMouseListener(new MouseListener() {
 			
 			@Override
@@ -96,7 +96,7 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener{ // l
 				// TODO Auto-generated method stub
 				
 			}
-		});
+		});*/
 		
 		
 	}
@@ -116,8 +116,6 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener{ // l
 		
 		this.setLayout(new BorderLayout());
 		
-		//final JMenuBar tableMenuBar = createTableMenuBar();
-		//this.gameFrame.setJMenuBar(tableMenuBar);
 		
 		boardPanel = new BoardPanel();
 		southPanel = new SouthPanel();
@@ -383,43 +381,6 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener{ // l
 	
 	
 	
-/*
-	private JMenuBar createTableMenuBar() {
-		
-		JMenuBar tableMenuBar = new JMenuBar();
-		tableMenuBar.add(createFileMenu());
-		
-		return tableMenuBar;
-		
-	}*/
-	/*
-	private JMenu createFileMenu() {
-		final JMenu fileMenu = new JMenu("File");
-		
-		final JMenuItem openPGN = new JMenuItem("Load PGN File");
-		
-		openPGN.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("open PGN");
-			};
-		});
-			fileMenu.add(openPGN);
-			
-			final JMenuItem exitMenuItem = new JMenuItem("Exit");
-			exitMenuItem.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					
-					System.exit(0);
-				}
-				
-			});
-			fileMenu.add(exitMenuItem);
-			
-			return fileMenu;
-			
-	}*/
 	
 	
 	public static BoardPanel getBoardPanel() {
@@ -435,7 +396,7 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener{ // l
 	public void passerEnChoixDuJoueur() {
 		this.otherGlassPan = new OtherGlassPane();
 		
-		for (CardPanel carte : southPanel.handPanel.getHandcards()) {
+		for (CardPanel carte : SouthPanel.handPanel.getHandcards()) {
 			carte.removeMouseListeners();
 		}
 		

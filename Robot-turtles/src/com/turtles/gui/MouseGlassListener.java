@@ -60,10 +60,6 @@ public class MouseGlassListener extends MouseAdapter {
 
 			// TODO non bougeable quand = à 0
 
-			/*
-			 * if (Fenetre.isCardMovable(composant) == false) {
-			 * System.out.println("carte non bougeable"); return; }
-			 */
 			
 			if (composant.getName().contentEquals("MurPanel")) {
 				symboleMur = 'M';
@@ -121,7 +117,9 @@ public class MouseGlassListener extends MouseAdapter {
 			myGlass.setVisible(false);
 			
 			Game.construireMur(event.getXOnScreen(), event.getYOnScreen(), symboleMur);
-			Game.fenetre.getBoardPanel().drawBoard();
+			Fenetre.getBoardPanel().drawBoard();
+			InventairePanel.desactiveLesMurs();
+			Game.etatPartie = EtatPartie.FINDETOUR;
 
 
 		}
@@ -145,7 +143,7 @@ public class MouseGlassListener extends MouseAdapter {
 			myGlass.setVisible(false);
 
 			int posCarteSelect = Fenetre.posDeLaCarteSelectionnee(composant);
-			System.out.println(posCarteSelect);
+			
 			if (location.getY() < 800) {
 
 				int i = 0;
@@ -173,7 +171,7 @@ public class MouseGlassListener extends MouseAdapter {
 				Fenetre.getSouthPanel().drawHandProgramme(); // TODO changer le cardsPanel
 
 				Game.fenetre.ajouterListeners();
-				Game.etatPartie = EtatPartie.DESIGNATIONJOUEUR;
+				
 			}
 		}
 	}

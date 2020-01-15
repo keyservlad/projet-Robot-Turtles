@@ -16,7 +16,7 @@ public class RessourcesPanel extends JPanel{
 	private JPanel deckPanel=new JPanel();
 	private InventairePanel inventairePanel= new InventairePanel();
 	private final String LegendDeck = "./ressources/images/cards/legendDeck.png";
-	private final String LegendDeckVide = "./ressources/images/cards/legendDeckVide.png";
+	//private final String LegendDeckVide = "./ressources/images/cards/legendDeckVide.png";
 	private Dimension RESSOURCES_PANEL_DIMENSION = new Dimension(735, 175);
 	
 	public RessourcesPanel() {
@@ -29,11 +29,8 @@ public class RessourcesPanel extends JPanel{
 		deckPanel.removeAll();
 		try {
 			
-			if(Game.tortues.get(Game.tourDuJoueur).getDeck().getCardsList().size() > 20) {
-				deckPanel.add(new JLabel(new ImageIcon(ImageIO.read(new File(LegendDeck)))));
-			}else {
-				deckPanel.add(new JLabel(new ImageIcon(ImageIO.read(new File(LegendDeckVide)))));
-			}
+			deckPanel.add(new JLabel(new ImageIcon(ImageIO.read(new File(LegendDeck)))));
+			// deck vide à implémenter dans une fonction drawDeck à rajouter (optionel) 
 			
 			
 		} catch (IOException e) {

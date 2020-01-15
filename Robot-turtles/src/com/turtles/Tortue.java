@@ -72,9 +72,13 @@ public class Tortue {
 		
 		// on doit verifier que la position est valide avant de deplacer grace a la fonction deplacementvalide()
 		
+		
+		
+		
 		if (Game.plateau.deplacementValide(this.direction, this.xPos, this.yPos, this.color)) {
 			switch(this.direction) {
 			case 'S':
+				
 				this.yPos += 1;
 				break;
 				
@@ -293,8 +297,6 @@ public class Tortue {
 	public void retirerMurDeGlaceInventaire() {
 		if (this.inventaire.get("murDeGlace") != 0) {
 			this.inventaire.replace("murDeGlace", this.inventaire.get("murDeGlace") - 1);
-		}else {
-			//TODO
 		}
 		
 		
@@ -303,8 +305,6 @@ public class Tortue {
 	public void retirerMurDePierreInventaire() {
 		if (this.inventaire.get("murDePierre") != 0) {
 			this.inventaire.replace("murDePierre", this.inventaire.get("murDePierre") - 1);
-		}else {
-			//TODO
 		}
 		
 		

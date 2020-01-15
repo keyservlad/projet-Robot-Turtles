@@ -48,6 +48,7 @@ public class OtherGlassPane extends JPanel{
 				else if (e.getX() > 750 && e.getX() < 750 + 400 & e.getY() > 500 && e.getY() < 600) {	// bouon contruire un mur
 					Game.etatPartie = EtatPartie.CONSTRUIRE;
 					Game.fenetre.repasserEnJeu();
+					InventairePanel.activeLesMurs();
 				}
 				else if (e.getX() > 750 && e.getX() < 750 + 400 & e.getY() > 700 && e.getY() < 800) {	// bouton executer le programme
 					Game.etatPartie = EtatPartie.EXECUTER;

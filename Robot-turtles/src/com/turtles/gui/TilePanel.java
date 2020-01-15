@@ -17,29 +17,27 @@ public class TilePanel extends JPanel {
 	private static final Dimension TILE_PANEL_DIMENSION = new Dimension(10, 10);
 	private final int tilex;
 	private final int tiley;
-	
 
 	private final String tortueRougeHaut = "./ressources/images/tortues/rouge/tortue_rouge_haut.png";
 	private final String tortueRougeBas = "./ressources/images/tortues/rouge/tortue_rouge_bas.png";
 	private final String tortueRougeDroite = "./ressources/images/tortues/rouge/tortue_rouge_droit.png";
 	private final String tortueRougeGauche = "./ressources/images/tortues/rouge/tortue_rouge_gauche.png";
-	
+
 	private final String tortueVerteHaut = "./ressources/images/tortues/verte/tortue_verte_haut.png";
 	private final String tortueVerteBas = "./ressources/images/tortues/verte/tortue_verte_bas.png";
 	private final String tortueVerteDroite = "./ressources/images/tortues/verte/tortue_verte_droit.png";
 	private final String tortueVerteGauche = "./ressources/images/tortues/verte/tortue_verte_gauche.png";
-	
+
 	private final String tortueBleueHaut = "./ressources/images/tortues/bleue/tortue_bleue_haut.png";
 	private final String tortueBleueBas = "./ressources/images/tortues/bleue/tortue_bleue_bas.png";
 	private final String tortueBleueDroite = "./ressources/images/tortues/bleue/tortue_bleue_droit.png";
 	private final String tortueBleueGauche = "./ressources/images/tortues/bleue/tortue_bleue_gauche.png";
-	
+
 	private final String tortueJauneHaut = "./ressources/images/tortues/jaune/tortue_jaune_haut.png";
 	private final String tortueJauneBas = "./ressources/images/tortues/jaune/tortue_jaune_bas.png";
 	private final String tortueJauneDroite = "./ressources/images/tortues/jaune/tortue_jaune_droit.png";
 	private final String tortueJauneGauche = "./ressources/images/tortues/jaune/tortue_jaune_gauche.png";
-	
-	
+
 	private final String murIconPath = "./ressources/images/WALL.png";
 	private final String glaceIconPath = "./ressources/images/ICE.png";
 	private final String rubyIconPath = "./ressources/images/RUBY.png";
@@ -69,7 +67,7 @@ public class TilePanel extends JPanel {
 				BufferedImage image = null;
 				int i = 0;
 				int index = 0;
-				
+
 				switch (plateau.getPlateau()[this.tiley][this.tilex]) {
 				case 'X':
 					image = ImageIO.read(new File(rubyIconPath));
@@ -84,115 +82,115 @@ public class TilePanel extends JPanel {
 					break;
 
 				case 'R':
-					
+
 					for (Tortue tortue : Game.tortues) {
-						if (tortue.getColor().contentEquals("Rouge")){
+						if (tortue.getColor().contentEquals("Rouge")) {
 							index = i;
 						}
 						i++;
 					}
-					switch(Game.tortues.get(index).getDirection()) {
+					switch (Game.tortues.get(index).getDirection()) {
 					case 'N':
 						image = ImageIO.read(new File(tortueRougeHaut));
 						break;
-						
+
 					case 'S':
 						image = ImageIO.read(new File(tortueRougeBas));
 						break;
-						
+
 					case 'W':
 						image = ImageIO.read(new File(tortueRougeGauche));
 						break;
-						
+
 					case 'E':
 						image = ImageIO.read(new File(tortueRougeDroite));
 						break;
 					}
-					
+
 					break;
 
 				case 'V':
-					
+
 					for (Tortue tortue : Game.tortues) {
-						if (tortue.getColor().contentEquals("Verte")){
+						if (tortue.getColor().contentEquals("Verte")) {
 							index = i;
 						}
 						i++;
 					}
-					switch(Game.tortues.get(index).getDirection()) {
+					switch (Game.tortues.get(index).getDirection()) {
 					case 'N':
 						image = ImageIO.read(new File(tortueVerteHaut));
 						break;
-						
+
 					case 'S':
 						image = ImageIO.read(new File(tortueVerteBas));
 						break;
-						
+
 					case 'W':
 						image = ImageIO.read(new File(tortueVerteGauche));
 						break;
-						
+
 					case 'E':
 						image = ImageIO.read(new File(tortueVerteDroite));
 						break;
 					}
-					
+
 					break;
 
 				case 'B':
-					
+
 					for (Tortue tortue : Game.tortues) {
-						if (tortue.getColor().contentEquals("Bleue")){
+						if (tortue.getColor().contentEquals("Bleue")) {
 							index = i;
 						}
 						i++;
 					}
-					switch(Game.tortues.get(index).getDirection()) {
+					switch (Game.tortues.get(index).getDirection()) {
 					case 'N':
 						image = ImageIO.read(new File(tortueBleueHaut));
 						break;
-						
+
 					case 'S':
 						image = ImageIO.read(new File(tortueBleueBas));
 						break;
-						
+
 					case 'W':
 						image = ImageIO.read(new File(tortueBleueGauche));
 						break;
-						
+
 					case 'E':
 						image = ImageIO.read(new File(tortueBleueDroite));
 						break;
 					}
-					
+
 					break;
 
 				case 'J':
-					
+
 					for (Tortue tortue : Game.tortues) {
-						if (tortue.getColor().contentEquals("Jaune")){
+						if (tortue.getColor().contentEquals("Jaune")) {
 							index = i;
 						}
 						i++;
 					}
-					switch(Game.tortues.get(index).getDirection()) {
+					switch (Game.tortues.get(index).getDirection()) {
 					case 'N':
 						image = ImageIO.read(new File(tortueJauneHaut));
 						break;
-						
+
 					case 'S':
 						image = ImageIO.read(new File(tortueJauneBas));
 						break;
-						
+
 					case 'W':
 						image = ImageIO.read(new File(tortueJauneGauche));
 						break;
-						
+
 					case 'E':
 						image = ImageIO.read(new File(tortueJauneDroite));
 						break;
 					}
-					
+
 					break;
 
 				}
@@ -205,13 +203,11 @@ public class TilePanel extends JPanel {
 		}
 
 	}
-	
-	public void drawTile () {
+
+	public void drawTile() {
 		assignTilePieceIcon(Game.plateau);
 		validate();
 		repaint();
 	}
-	
-	
 
 }

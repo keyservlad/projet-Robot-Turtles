@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 
 import com.turtles.gui.EtatPartie;
 import com.turtles.gui.Fenetre;
+import com.turtles.gui.InventairePanel;
 
 public class Game {
 	
@@ -61,6 +62,7 @@ public class Game {
 					fenetre.getContentPane().repaint();
 				}
 				
+				InventairePanel.refreshMurs();
 				fenetre.afficherFenetreJeu();
 				try {
 					Thread.sleep(500);
@@ -74,8 +76,6 @@ public class Game {
 				while(etatPartie == EtatPartie.CHOIXACTION) {
 					t = new Thread();
 					t.start();
-					
-					
 				}
 				t.stop();
 				fenetre.otherGlassPan = new JPanel();
@@ -85,12 +85,11 @@ public class Game {
 					fenetre.repaint();
 				}
 				
-				// TODO ajouter les listeners
+				
 				while(etatPartie == EtatPartie.CONSTRUIRE) {
 					fenetre.repaint();
-
 				}
-				// TODO enlever les listeners
+				
 
 				if (etatPartie == EtatPartie.EXECUTER) {		// c'est ici qu'on met la condition de victoire
 					
@@ -100,6 +99,7 @@ public class Game {
 				}
 				
 				while(etatPartie == EtatPartie.FINDETOUR) {
+					fenetre.repaint();
 					
 				}
 
@@ -390,16 +390,26 @@ public class Game {
 		
 		int x = 0;
 		int y = 0;
-		int j = 0;
 		boolean isRest = false;
+		String typeMur = "";
 
+		
+		switch(symbole) {
+		case 'G':
+			typeMur = "murDeGlace";
+			break;
+			
+		case 'M':
+			typeMur = "murDePierre";
+			break;
+		}
+		
 		for (String i : tortues.get(tourDuJoueur).getInventaire().keySet()) {
-			if (tortues.get(tourDuJoueur).getInventaire().get(i) != 0) {
-				System.out.println(j + " - " + i);
+			if (tortues.get(tourDuJoueur).getInventaire().get(i) != 0 && i.contentEquals(typeMur)) {
 				isRest = true;
 			}
-			j++;
 		}
+		
 		
 		if (isRest){
 			
@@ -419,6 +429,8 @@ public class Game {
 				y = 6;
 			} else if (yScreen > 700 && yScreen <= 758) {
 				y = 7;
+			}else {
+				return;
 			}
 
 			if (xScreen > 740 && xScreen <= 794) {
@@ -437,22 +449,28 @@ public class Game {
 				x = 6;
 			} else if (xScreen > 1125 && xScreen <= 1180) {
 				x = 7;
+			}else {
+				return;
 			}
 			
 			if (isMurValide(x, y)) {
-				plateau.setPlateau(x, y, symbole);
+				if(Plateau.verifierLesChemins(x, y)) {
+					plateau.setPlateau(x, y, symbole);
+					switch (symbole) {
+					case 'G':
+						tortues.get(tourDuJoueur).retirerMurDeGlaceInventaire();
+						//update le nombre de murs TODO
+						break;
+						
+					case 'M':
+						tortues.get(tourDuJoueur).retirerMurDePierreInventaire();
+					}
+				}
 			}
 			
-			/*
-			switch (choixMur) {
-			case 0:
-				tortues.get(tourDuJoueur).retirerMurDeGlaceInventaire();
-				break;
-				
-			case 1:
-				tortues.get(tourDuJoueur).retirerMurDePierreInventaire();
-			}
-			*/
+			
+			
+			InventairePanel.refreshMurs();
 			plateau.updatePlateau();
 			
 			

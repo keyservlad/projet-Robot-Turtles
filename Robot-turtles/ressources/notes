@@ -1,21 +1,9 @@
 
-il faudra set des tailles max pour eviter d'avoir des trop gros board
 
-utiliser le type color au lieu de String
 au lieu de supprimer la tortue du joueur quand il gagne, il faut mettre une condition dans le corps du programme qui fait que quand la boucle va passer sur son  tour ca ne fera rien
 regles a implementer: on ne peut pas se deplacer ni poser de mur aux cases initiales (leur attribué le char 'S' peut etre quand la case est vide et afficher une tortue transparente
 on ne peux pas encerler un joueur un joyaux ni un spawn
 
-si on veut changer la couleur d'une tuile:
-dans le TilePanel():
-assignTileColor dans le constructeur, puis faire un setBackground(lightTileColor);
-
-peut etre faire comme lui avec une enum de toutes les tuiles (tres propre)
-
-
-
-
-dans le update plateau, mettre les images des tortues transparentes avant d'afficher les tortues pour permettre de savoir ou sont les spawns
 
 pour le menu : https://www.youtube.com/watch?v=urye2D3_mss&list=PLWms45O3n--6TvZmtFHaCWRZwEqnz2MHa&index=9
 
@@ -38,9 +26,6 @@ les etats de la game :
 	
 - fin de partie
 
-
---> pour la suite : 
-	on va utiliser les drawPanel pour afficher les panels selon l'etat de la game
 
 
 mesures:
@@ -65,23 +50,22 @@ mesures:
 
 
 
-Amélioration possible:
-faire une classe inventaire où l'on peut modifier la taille en parametre du constructeur
-idem pour le board (corriger sur le programme existant)
-
-
-
-replacer les boutons du choix du joueur ou les rendre plus clairs
-pouvoir faire glisser le mur sur la case qu'on veut (trop stylé)
-
-ne pas oublier à la fin si on veut garder sa main ou non
 
 bug dans un cas tres precis : si on invoque deux cartes (pas plus) de la meme couleur, qui etait cote à cote dans la main, 
 alors elles deviennent visibles en meme temps (probleme vennant du programme en console), j'ai passé deux heures pour regler seulement une partie du pb
 
 
 changer les polices partout
-refresh les valeurs des murs quand elles sont modifiaient
+
+une fois qu'on aura setup le system de victoire, tester de placer un mur apres qu'un joueur ait finit
 
 
-
+todo next:
++ determiner si on veut garder sa main ou non
++ panels score et boards
++ laser (voir le sujet) + animation
++ recalibrer les images et set les images de fond
++ fin du jeu / ou quand une tortue gagne
++ carte bug
++ set une taille max au board
++ image de tortue en fond à chaque emplacement initial
