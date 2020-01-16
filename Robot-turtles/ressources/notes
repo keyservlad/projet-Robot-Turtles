@@ -1,0 +1,86 @@
+
+il faudra set des tailles max pour eviter d'avoir des trop gros board
+
+utiliser le type color au lieu de String
+au lieu de supprimer la tortue du joueur quand il gagne, il faut mettre une condition dans le corps du programme qui fait que quand la boucle va passer sur son  tour ca ne fera rien
+regles a implementer: on ne peut pas se deplacer ni poser de mur aux cases initiales (leur attribué le char 'S' peut etre quand la case est vide et afficher une tortue transparente
+on ne peux pas encerler un joueur un joyaux ni un spawn
+
+si on veut changer la couleur d'une tuile:
+dans le TilePanel():
+assignTileColor dans le constructeur, puis faire un setBackground(lightTileColor);
+
+peut etre faire comme lui avec une enum de toutes les tuiles (tres propre)
+
+
+
+
+dans le update plateau, mettre les images des tortues transparentes avant d'afficher les tortues pour permettre de savoir ou sont les spawns
+
+pour le menu : https://www.youtube.com/watch?v=urye2D3_mss&list=PLWms45O3n--6TvZmtFHaCWRZwEqnz2MHa&index=9
+
+menu 2048 : https://www.youtube.com/watch?v=5kZF9qJY-9k
+
+drag and drop (video pas ouf) : https://www.youtube.com/watch?v=HYqODAQ2lQw	(on a fait la méthode openclassroom tout en bas de la page)
+
+
+
+les etats de la game : 
+- choix nombre joueurs + limite de score
+- joueur 1:
+	- choix de l'action à effectuer (jouer carte, invoquer, placer mur)
+	- jouer carte (place autant de carte qu'il le désire, bouton fin de tour apparait au bout d'une carte, il devient vert quand le board est plein ou quand la main est vide)
+	- invoquer (juste le bouton fin de tour qui apparait en vert, invoque les carte une par une dans l'ordre -montrer la carte en gros pendant une seconde à chaque fois qu'elle est invoquée)
+	- placer un mur (activation du mouselistener sur les tilePanel, apparition du bouton fin de tour en vert quand le mur est placé)
+	
+- joueur 2:
+	- idem
+	
+- fin de partie
+
+
+--> pour la suite : 
+	on va utiliser les drawPanel pour afficher les panels selon l'etat de la game
+
+
+mesures:
+	- boardPanel : 450 * 450
+	- northPanel : 450 * 315
+		- tourPanel : 450 * 157
+		- scorePanel : 450 * 157
+		
+	- southPanel : 450 * 315
+		- maMainPanel : 450 * 157
+		- monProgrammePanel : 450 * 157
+		
+	- westPanel : 735 * 1080
+		- enemyPanels ...
+			- enemyProgrammePanel
+			- enemyInventory (lui meme un panel avec une image de fond, une image du mur et un nombre)
+		
+	- eastPanel : 735 * 1080
+		- instructionPanel : Border.north
+		- buttonsPanel : Border.south
+			- placer à la main le bouton de fin de tour, le deck restant et l'inventaire (panel contenant une image et un nombre ainsi qu'une image de background)
+
+
+
+Amélioration possible:
+faire une classe inventaire où l'on peut modifier la taille en parametre du constructeur
+idem pour le board (corriger sur le programme existant)
+
+
+
+replacer les boutons du choix du joueur ou les rendre plus clairs
+pouvoir faire glisser le mur sur la case qu'on veut (trop stylé)
+
+ne pas oublier à la fin si on veut garder sa main ou non
+
+bug dans un cas tres precis : si on invoque deux cartes (pas plus) de la meme couleur, qui etait cote à cote dans la main, 
+alors elles deviennent visibles en meme temps (probleme vennant du programme en console), j'ai passé deux heures pour regler seulement une partie du pb
+
+
+
+
+
+
