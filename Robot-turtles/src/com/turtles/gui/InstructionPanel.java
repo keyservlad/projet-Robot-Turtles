@@ -1,5 +1,6 @@
 package com.turtles.gui;
 
+import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.JLabel;
@@ -14,7 +15,7 @@ public class InstructionPanel extends JPanel{
 	public InstructionPanel() {
 		super();
 		
-		
+		setBackground(new Color(1.0f, 1.0f, 1.0f, 0.f));
 		//this.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.black));
 		
 		instructionsLabel = new JLabel();

@@ -42,7 +42,7 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener{ // l
 	
 	public static MyGlassPane glass = new MyGlassPane();
 	
-	public static NorthPanel northPanel = new NorthPanel();
+	public static NorthPanel northPanel;
 	public static WestPanel westPanel = new WestPanel();
 	public EastPanel eastPanel = new EastPanel();
 	
@@ -114,12 +114,12 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener{ // l
 		this.setContentPane(new ContentPane(fond));
 		
 		
-		this.setLayout(new BorderLayout());
+		this.setLayout(new BorderLayout(5, 5));
 		
 		
 		boardPanel = new BoardPanel();
 		southPanel = new SouthPanel();
-		
+		northPanel = new NorthPanel();
 		
 		
 		this.add(boardPanel, BorderLayout.CENTER);

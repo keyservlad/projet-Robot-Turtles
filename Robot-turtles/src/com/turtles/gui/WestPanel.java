@@ -11,7 +11,7 @@ public class WestPanel extends JPanel{
 	
 	public WestPanel() {
 		super();
-		setBackground(new Color(1.0f, 1.0f, 1.0f, 0.0f));
+		setBackground(new Color(1.0f, 1.0f, 1.0f, 0.5f));
 		setPreferredSize(WEST_PANEL_DIMENSION);
 		validate();
 	}

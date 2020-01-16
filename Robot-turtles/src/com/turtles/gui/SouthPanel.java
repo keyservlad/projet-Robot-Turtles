@@ -15,7 +15,7 @@ public class SouthPanel extends JPanel {
 
 	SouthPanel() {
 		super(new BorderLayout(0, 4));
-		setBackground(new Color(1.0f, 1.0f, 1.0f, 0.0f));
+		setBackground(new Color(1.0f, 1.0f, 1.0f, 0.5f));
 
 		handPanel = new HandPanel(this);
 		programmePanel = new ProgrammePanel();

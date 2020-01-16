@@ -27,7 +27,7 @@ public class EastPanel extends JPanel {
 
 	public EastPanel() {
 		super(new BorderLayout());
-		setBackground(new Color(1.0f, 1.0f, 1.0f, 0.0f));
+		setBackground(new Color(1.0f, 1.0f, 1.0f, 0.5f));
 		setPreferredSize(EAST_PANEL_DIMENSION);
 
 		middlePanel = new JPanel();
@@ -48,7 +48,8 @@ public class EastPanel extends JPanel {
 		// this.desactiverBouton();
 
 		endButton.setPreferredSize(new Dimension(100, 30));
-
+		
+		this.middlePanel.setBackground(new Color(1.0f, 1.0f, 1.0f, 0.f));
 		this.middlePanel.add(endButton);
 
 		add(middlePanel, BorderLayout.CENTER);

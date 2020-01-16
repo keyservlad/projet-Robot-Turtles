@@ -23,7 +23,7 @@ public class MurPanel extends JPanel{
 		switch (type) {
 		case "Glace" : 
 			try {
-				add(new JLabel(new ImageIcon(ImageIO.read(new File(ICEimage)).getScaledInstance(40, 40, 40))));
+				add(new JLabel(new ImageIcon(ImageIO.read(new File(ICEimage)).getScaledInstance(35, 35, 35))));
 				
 			} catch (IOException e) {
 				
@@ -36,7 +36,7 @@ public class MurPanel extends JPanel{
 		case "Pierre" : 
 			
 			try {
-				add(new JLabel(new ImageIcon(ImageIO.read(new File(WALLimage)).getScaledInstance(40, 40, 40))));
+				add(new JLabel(new ImageIcon(ImageIO.read(new File(WALLimage)).getScaledInstance(35, 35, 35))));
 				
 			} catch (IOException e) {
 				
