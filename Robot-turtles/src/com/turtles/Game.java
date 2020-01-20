@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 
 import com.turtles.gui.EtatPartie;
 import com.turtles.gui.Fenetre;
+import com.turtles.gui.InventairePanel;
 
 public class Game {
 	
@@ -61,6 +62,7 @@ public class Game {
 					fenetre.getContentPane().repaint();
 				}
 				
+				InventairePanel.refreshMurs();
 				fenetre.afficherFenetreJeu();
 				try {
 					Thread.sleep(500);
@@ -74,8 +76,6 @@ public class Game {
 				while(etatPartie == EtatPartie.CHOIXACTION) {
 					t = new Thread();
 					t.start();
-					
-					
 				}
 				t.stop();
 				fenetre.otherGlassPan = new JPanel();
@@ -83,12 +83,13 @@ public class Game {
 				
 				while(etatPartie == EtatPartie.COMPLETER) {
 					fenetre.repaint();
-					
 				}
 				
+				
 				while(etatPartie == EtatPartie.CONSTRUIRE) {
-
+					fenetre.repaint();
 				}
+				
 
 				if (etatPartie == EtatPartie.EXECUTER) {		// c'est ici qu'on met la condition de victoire
 					
@@ -98,6 +99,7 @@ public class Game {
 				}
 				
 				while(etatPartie == EtatPartie.FINDETOUR) {
+					fenetre.repaint();
 					
 				}
 
@@ -309,7 +311,7 @@ public class Game {
 				System.out.println("plus de mur!");
 				
 			}else {
-				construireMur(tourDuJoueur);
+				//construireMur(tourDuJoueur);
 			}
 			
 			break;
@@ -384,57 +386,98 @@ public class Game {
 		tortues.get(tourDuJoueur).invoquerUneCarte(indexToCarteInHand(saisieJoueur, tourDuJoueur)); // invoque une carte sur le programme et le retire de la main
 	}
 	
-	public void construireMur(int tourDuJoueur) {
-		int x;
-		int y;
-		int j = 0;
+	public static void construireMur(int xScreen, int yScreen, char symbole) {
+		
+		int x = 0;
+		int y = 0;
 		boolean isRest = false;
-		int choixMur;
-		char symbole = ' ';
+		String typeMur = "";
 
-		for (String i : tortues.get(tourDuJoueur).getInventaire().keySet()) {
-			if (tortues.get(tourDuJoueur).getInventaire().get(i) != 0) {
-				System.out.println(j + " - " + i);
-				isRest = true;
-			}
-			j++;
+		
+		switch(symbole) {
+		case 'G':
+			typeMur = "murDeGlace";
+			break;
+			
+		case 'M':
+			typeMur = "murDePierre";
+			break;
 		}
 		
+		for (String i : tortues.get(tourDuJoueur).getInventaire().keySet()) {
+			if (tortues.get(tourDuJoueur).getInventaire().get(i) != 0 && i.contentEquals(typeMur)) {
+				isRest = true;
+			}
+		}
+		
+		
 		if (isRest){
-			do {
-				choixMur = Integer.parseInt(scanner.nextLine()); // faire le choix non pas avec des int mais avec des strings
-			}while (choixMur != 0 && choixMur != 1);  // bug mais osef car il va se barrer avec l'IG
 			
-			symbole = attributionSymbole(choixMur);
-			
-			do {
-				do {
-					System.out.println("entrer l'abscisse : ");
-					x = Integer.parseInt(scanner.nextLine());
+			if (yScreen > 343 && yScreen <= 395) {
+				y = 0;
+			} else if (yScreen > 395 && yScreen <= 446) {
+				y = 1;
+			} else if (yScreen > 446 && yScreen <= 500) {
+				y = 2;
+			} else if (yScreen > 500 && yScreen <= 551) {
+				y = 3;
+			} else if (yScreen > 551 && yScreen <= 604) {
+				y = 4;
+			} else if (yScreen > 604 && yScreen <= 655) {
+				y = 5;
+			} else if (yScreen > 655 && yScreen <= 700) {
+				y = 6;
+			} else if (yScreen > 700 && yScreen <= 758) {
+				y = 7;
+			}else {
+				return;
+			}
 
-				} while (x < 0 || x > 7);
-
-				do {
-					System.out.println("entrer l'ordonnée : ");
-					y = Integer.parseInt(scanner.nextLine());
-				} while (y < 0 || y > 7);
-
-			} while (isMurValide(x, y) == false);
-			
-			plateau.setPlateau(x, y, symbole);
-			switch (choixMur) {
-			case 0:
-				tortues.get(tourDuJoueur).retirerMurDeGlaceInventaire();
-				break;
-				
-			case 1:
-				tortues.get(tourDuJoueur).retirerMurDePierreInventaire();
+			if (xScreen > 740 && xScreen <= 794) {
+				x = 0;
+			} else if (xScreen > 794 && xScreen <= 850) {
+				x = 1;
+			} else if (xScreen > 850 && xScreen <= 905) {
+				x = 2;
+			} else if (xScreen > 905 && xScreen <= 960) {
+				x = 3;
+			} else if (xScreen > 960 && xScreen <= 1015) {
+				x = 4;
+			} else if (xScreen > 1015 && xScreen <= 1070) {
+				x = 5;
+			} else if (xScreen > 1070 && xScreen <= 1125) {
+				x = 6;
+			} else if (xScreen > 1125 && xScreen <= 1180) {
+				x = 7;
+			}else {
+				return;
 			}
 			
+			if (isMurValide(x, y)) {
+				if(Plateau.verifierLesChemins(x, y)) {
+					plateau.setPlateau(x, y, symbole);
+					switch (symbole) {
+					case 'G':
+						tortues.get(tourDuJoueur).retirerMurDeGlaceInventaire();
+						//update le nombre de murs TODO
+						break;
+						
+					case 'M':
+						tortues.get(tourDuJoueur).retirerMurDePierreInventaire();
+					}
+				}
+			}
+			
+			
+			
+			InventairePanel.refreshMurs();
 			plateau.updatePlateau();
 			
 			
 		}
+		
+		
+		
 
 		
 
@@ -452,7 +495,7 @@ public class Game {
 		return ' ';
 	}
 	
-	public boolean isMurValide(int x, int y) {
+	public static boolean isMurValide(int x, int y) {
 		
 		if (plateau.getPlateau()[y][x] == ' ') {
 			return true;
@@ -470,9 +513,7 @@ public class Game {
 			//tortues.get(tourDuJoueur).getProgramme().getCardsList().remove(carte.getIndex(tortues.get(tourDuJoueur).getProgramme().getCardsList()));
 		}
 		
-		tortues.get(tourDuJoueur).getProgramme().clearListe();		
-		
-		
+		tortues.get(tourDuJoueur).getProgramme().clearListe();
 	}
 	
 	public Carte indexToCarteInHand(int index, int tourDuJoueur) {

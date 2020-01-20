@@ -38,20 +38,21 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener{ // l
 	private JButton exitButton = new JButton();
 	private JButton musicButton= new JButton();
 	
+	
 	private static BoardPanel boardPanel = null;
 	private static SouthPanel southPanel;
 	
 	public static MyGlassPane glass = new MyGlassPane();
 	
-	public static NorthPanel northPanel = new NorthPanel();
+	public static NorthPanel northPanel;
 	public static WestPanel westPanel = new WestPanel();
-	public static EastPanel eastPanel = new EastPanel();
+	public EastPanel eastPanel = new EastPanel();
 	
 	public JPanel otherGlassPan;
 	
 	
 	
-	private final static Dimension OUTER_FRAME_DIMENSION = new Dimension(1366, 768);
+	private final static Dimension OUTER_FRAME_DIMENSION = new Dimension(1920, 1080);
 	
 	private final String BackgroundImage = "./ressources/images/gaelBackground.jpg";
 	private Image fond;
@@ -61,12 +62,43 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener{ // l
 
 	
 	public Fenetre() {
-		super("Robot Turtles");
-		
-		
+		super("Robot Turtles");	
 		
 		afficherFenetreMenu();
 		
+		/*
+		addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				System.out.println(e.getX() + "  " + e.getY());
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});*/
 		
 		
 	}
@@ -84,14 +116,12 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener{ // l
 		this.setContentPane(new ContentPane(fond));
 		
 		
-		this.setLayout(new BorderLayout());
+		this.setLayout(new BorderLayout(5, 5));
 		
-		//final JMenuBar tableMenuBar = createTableMenuBar();
-		//this.gameFrame.setJMenuBar(tableMenuBar);
 		
 		boardPanel = new BoardPanel();
 		southPanel = new SouthPanel();
-		
+		northPanel = new NorthPanel();
 		
 		
 		this.add(boardPanel, BorderLayout.CENTER);
@@ -182,8 +212,7 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener{ // l
 		exitButton.setBounds((int) (this.getWidth() * 0.4), (int)(this.getHeight() * 0.8), (int) exitButton.getPreferredSize().getWidth(), (int) exitButton.getPreferredSize().getHeight());
 		
 		this.add(exitButton);
-	
-		//Music Button 
+		
 		musicButton.setText("Music");
 		musicButton.addActionListener(this);
 		
@@ -211,6 +240,7 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener{ // l
 		else if (arg0.getSource()== musicButton ) {
 			//lance la musique si on appuie sur Music
 			Sound.music();
+			
 		}
 		
 	}
@@ -220,6 +250,7 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener{ // l
 		if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
 			System.exit(0);
 		}
+		
 		
 	}
 
@@ -365,43 +396,6 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener{ // l
 	
 	
 	
-/*
-	private JMenuBar createTableMenuBar() {
-		
-		JMenuBar tableMenuBar = new JMenuBar();
-		tableMenuBar.add(createFileMenu());
-		
-		return tableMenuBar;
-		
-	}*/
-	/*
-	private JMenu createFileMenu() {
-		final JMenu fileMenu = new JMenu("File");
-		
-		final JMenuItem openPGN = new JMenuItem("Load PGN File");
-		
-		openPGN.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("open PGN");
-			};
-		});
-			fileMenu.add(openPGN);
-			
-			final JMenuItem exitMenuItem = new JMenuItem("Exit");
-			exitMenuItem.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					
-					System.exit(0);
-				}
-				
-			});
-			fileMenu.add(exitMenuItem);
-			
-			return fileMenu;
-			
-	}*/
 	
 	
 	public static BoardPanel getBoardPanel() {
@@ -417,7 +411,7 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener{ // l
 	public void passerEnChoixDuJoueur() {
 		this.otherGlassPan = new OtherGlassPane();
 		
-		for (CardPanel carte : southPanel.handPanel.getHandcards()) {
+		for (CardPanel carte : SouthPanel.handPanel.getHandcards()) {
 			carte.removeMouseListeners();
 		}
 		
@@ -476,6 +470,10 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener{ // l
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public EastPanel getEastPanel() {
+		return this.eastPanel;
 	}
 	
 	

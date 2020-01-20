@@ -1,28 +1,32 @@
 package com.turtles;
-import java.io.*;
-import sun.audio.*;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import javazoom.jl.decoder.JavaLayerException;
+import javazoom.jl.player.Player;
 
 
 public class Sound {
-	
-	private final static String nom_music ="./ressources/MenuTheme.wav";
-			
 	public static void Main (String[] args) {
 		
 	}
-	
-	@SuppressWarnings("restriction")
 	public static void music() {
-		AudioPlayer BGP=AudioPlayer.player;
-		AudioStream BGM;
-		AudioData MD;
-		ContinuousAudioDataStream loop=null;
 		try {
-		BGM=new AudioStream(new FileInputStream(nom_music));
-		MD = BGM.getData();
-		loop=new ContinuousAudioDataStream(MD);
-		}catch (IOException error){}
-		BGP.start(loop);
+			FileInputStream fileInputStream = new FileInputStream("song.mp3");
+			Player player = new Player(fileInputStream);
+			System.out.println("Song is playing...");
+			player.play();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JavaLayerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 	
 }
+
+

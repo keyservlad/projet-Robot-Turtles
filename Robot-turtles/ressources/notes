@@ -1,21 +1,9 @@
 
-il faudra set des tailles max pour eviter d'avoir des trop gros board
 
-utiliser le type color au lieu de String
 au lieu de supprimer la tortue du joueur quand il gagne, il faut mettre une condition dans le corps du programme qui fait que quand la boucle va passer sur son  tour ca ne fera rien
 regles a implementer: on ne peut pas se deplacer ni poser de mur aux cases initiales (leur attribué le char 'S' peut etre quand la case est vide et afficher une tortue transparente
 on ne peux pas encerler un joueur un joyaux ni un spawn
 
-si on veut changer la couleur d'une tuile:
-dans le TilePanel():
-assignTileColor dans le constructeur, puis faire un setBackground(lightTileColor);
-
-peut etre faire comme lui avec une enum de toutes les tuiles (tres propre)
-
-
-
-
-dans le update plateau, mettre les images des tortues transparentes avant d'afficher les tortues pour permettre de savoir ou sont les spawns
 
 pour le menu : https://www.youtube.com/watch?v=urye2D3_mss&list=PLWms45O3n--6TvZmtFHaCWRZwEqnz2MHa&index=9
 
@@ -32,15 +20,12 @@ les etats de la game :
 	- jouer carte (place autant de carte qu'il le désire, bouton fin de tour apparait au bout d'une carte, il devient vert quand le board est plein ou quand la main est vide)
 	- invoquer (juste le bouton fin de tour qui apparait en vert, invoque les carte une par une dans l'ordre -montrer la carte en gros pendant une seconde à chaque fois qu'elle est invoquée)
 	- placer un mur (activation du mouselistener sur les tilePanel, apparition du bouton fin de tour en vert quand le mur est placé)
-	
+	- fin de tour
 - joueur 2:
 	- idem
 	
 - fin de partie
 
-
---> pour la suite : 
-	on va utiliser les drawPanel pour afficher les panels selon l'etat de la game
 
 
 mesures:
@@ -65,22 +50,34 @@ mesures:
 
 
 
-Amélioration possible:
-faire une classe inventaire où l'on peut modifier la taille en parametre du constructeur
-idem pour le board (corriger sur le programme existant)
-
-
-
-replacer les boutons du choix du joueur ou les rendre plus clairs
-pouvoir faire glisser le mur sur la case qu'on veut (trop stylé)
-
-ne pas oublier à la fin si on veut garder sa main ou non
 
 bug dans un cas tres precis : si on invoque deux cartes (pas plus) de la meme couleur, qui etait cote à cote dans la main, 
 alors elles deviennent visibles en meme temps (probleme vennant du programme en console), j'ai passé deux heures pour regler seulement une partie du pb
 
 
+changer les polices partout
+
+une fois qu'on aura setup le system de victoire, tester de placer un mur apres qu'un joueur ait finit
 
 
-
+todo next:
++ determiner si on veut garder sa main ou non
++ panels score et boards
++ laser (voir le sujet) + animation + reflete
++ recalibrer les images et set les images de fond
++ fin du jeu / ou quand une tortue gagne
++ carte bug
++ set une taille max au board
++ image de tortue en fond à chaque emplacement initial
++ relecture / correction des erreurs / epurer les fonctions qui servent à r
++ instuctionpanel
++ virer les accents dans le gui
++ mettre des commentaires
++ dos de cartes
++ echap pour quitter
++ sons
++ remplir le deck quand il est vide
++ demi tour si on touche un mur je crois
++ mur detruit s'il est sur le spawn et que le joueur res
++ dans la fonction pioche, ajouter un remplissage de deck
 

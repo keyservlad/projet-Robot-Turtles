@@ -18,7 +18,7 @@ import com.turtles.Game;
 
 public class CardPanel extends JPanel{
 	
-	private static final Dimension CARD_PANEL_DIMENSION = new Dimension(100, 135);
+	public static final Dimension CARD_PANEL_DIMENSION = new Dimension(100, 135);
 	private final int posCard;
 	private String type;
 	private boolean isMovable = true;
@@ -56,7 +56,7 @@ public class CardPanel extends JPanel{
 			
 		}
 		
-		
+		this.setName("CardPanel");
 		validate();
 	}
 
