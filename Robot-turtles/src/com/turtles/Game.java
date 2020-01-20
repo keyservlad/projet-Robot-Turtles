@@ -513,9 +513,7 @@ public class Game {
 			//tortues.get(tourDuJoueur).getProgramme().getCardsList().remove(carte.getIndex(tortues.get(tourDuJoueur).getProgramme().getCardsList()));
 		}
 		
-		tortues.get(tourDuJoueur).getProgramme().clearListe();		
-		
-		
+		tortues.get(tourDuJoueur).getProgramme().clearListe();
 	}
 	
 	public Carte indexToCarteInHand(int index, int tourDuJoueur) {

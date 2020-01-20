@@ -172,7 +172,7 @@ public class Plateau {
 		return true;
 	}
 
-	public void melt(int x, int y) {
+	public void melt(int y, int x) {
 		this.plateau[y][x] = ' ';
 		this.updatePlateau();
 	}

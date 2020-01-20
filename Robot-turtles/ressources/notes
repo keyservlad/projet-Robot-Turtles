@@ -63,7 +63,7 @@ une fois qu'on aura setup le system de victoire, tester de placer un mur apres q
 todo next:
 + determiner si on veut garder sa main ou non
 + panels score et boards
-+ laser (voir le sujet) + animation
++ laser (voir le sujet) + animation + reflete
 + recalibrer les images et set les images de fond
 + fin du jeu / ou quand une tortue gagne
 + carte bug
@@ -75,3 +75,9 @@ todo next:
 + mettre des commentaires
 + dos de cartes
 + echap pour quitter
++ sons
++ remplir le deck quand il est vide
++ demi tour si on touche un mur je crois
++ mur detruit s'il est sur le spawn et que le joueur res
++ dans la fonction pioche, ajouter un remplissage de deck
+

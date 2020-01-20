@@ -311,11 +311,11 @@ public class Tortue {
 	}
 
 
-
+	// ajouter des return TODO
 	public void actionLaser() {
 		switch (this.direction) {
 		case 'S':
-			for (int i = this.yPos + 1; i < 7; i++) {
+			for (int i = this.yPos + 1; i <= 7; i++) {
 				
 				if (Game.plateau.getPlateau()[i][this.xPos] == 'G') {
 					Game.plateau.melt(i, this.xPos);
@@ -346,7 +346,7 @@ public class Tortue {
 			break;
 			
 		case 'N':
-			for (int i = this.yPos - 1; i > 0; i--) {
+			for (int i = this.yPos - 1; i >= 0; i--) {
 				
 				if (Game.plateau.getPlateau()[i][this.xPos] == 'G') {
 					Game.plateau.melt(i, this.xPos);
@@ -377,7 +377,7 @@ public class Tortue {
 			break;
 			
 		case 'E':
-			for (int i = this.xPos + 1; i < 7; i++) {
+			for (int i = this.xPos + 1; i <= 7; i++) {
 				
 				if (Game.plateau.getPlateau()[this.yPos][i] == 'G') {
 					Game.plateau.melt(this.yPos, i);
@@ -408,7 +408,7 @@ public class Tortue {
 			break;
 			
 		case 'W':
-			for (int i = this.xPos - 1; i > 0; i--) {
+			for (int i = this.xPos - 1; i >= 0; i--) {
 				
 				if (Game.plateau.getPlateau()[this.yPos][i] == 'G') {
 					Game.plateau.melt(this.yPos, i);
