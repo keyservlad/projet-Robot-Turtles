@@ -104,6 +104,7 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener{ // l
 	public void afficherFenetreJeu() {
 		
 		this.getContentPane().removeAll();
+		WestPanel.actualiserCouleur();
 		
 		fond = Toolkit.getDefaultToolkit().getImage(BackgroundImage);
 		try{
@@ -412,12 +413,23 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener{ // l
 		
 		setGlassPane(glass);
 		glass.setVisible(false);
+	}
+	
+	public void passerEnFinDeTour() {
+		Game.etatPartie = EtatPartie.FINDETOUR;
+		EastPanel.desactiverBouton();
+		WestPanel.activerBoutons();
 		
+		for (CardPanel carte : SouthPanel.handPanel.getHandcards()) {
+			carte.removeMouseListeners();
+		}
 		
 	}
 	
+	
+	
 	public void ajouterListeners() {
-		for (CardPanel carte : southPanel.handPanel.getHandcards()) {
+		for (CardPanel carte : SouthPanel.handPanel.getHandcards()) {
 			carte.addMouseListeners();
 		}
 	}
@@ -426,7 +438,7 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener{ // l
 		return this.otherGlassPan;
 	}
 	
-	public void invocation() {		//TODO condition de victoire
+	public void invocation() {		
 		
 		
 		for (Carte carte : Game.tortues.get(Game.tourDuJoueur).getProgramme().getCardsList()) {
@@ -460,6 +472,8 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener{ // l
 	public EastPanel getEastPanel() {
 		return this.eastPanel;
 	}
+
+	
 	
 	
 	

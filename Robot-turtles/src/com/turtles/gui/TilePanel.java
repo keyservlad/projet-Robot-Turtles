@@ -195,11 +195,13 @@ public class TilePanel extends JPanel {
 
 				}
 
-				add(new JLabel(new ImageIcon(image)));
+				add(new JLabel(new ImageIcon(image.getScaledInstance(50, 50, 50))));
 
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		}else {
+			// TODO case initiale 
 		}
 
 	}

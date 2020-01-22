@@ -98,10 +98,13 @@ public class Game {
 
 				}
 				
+				
+				fenetre.passerEnFinDeTour();
 				while(etatPartie == EtatPartie.FINDETOUR) {
 					fenetre.repaint();
-					
 				}
+				
+				
 
 				fenetre.repaint();
 				try {
@@ -123,19 +126,6 @@ public class Game {
 		return tortues;
 	}
 	
-	public int choixNbJoueurs() {
-		
-		int saisieNbJoueurs;
-		do {
-			System.out.println("Combien de joueurs (entre 2 et 4 joueurs)?");
-			saisieNbJoueurs = Integer.parseInt(scanner.nextLine());
-			
-		}while(saisieNbJoueurs != 2 && saisieNbJoueurs != 3 && saisieNbJoueurs != 4);
-		
-		return saisieNbJoueurs;
-		
-		
-	}
 	
 	public void creationTortues() {
 		
@@ -259,74 +249,10 @@ public class Game {
 
 	}
 	
-	public void afficheLaMainLePlateauEtLeBoard(int tourDuJoueur) {
-		plateau.updatePlateau();
-		tortues.get(tourDuJoueur).afficheLaMain();
-		//tortues.get(tourDuJoueur).afficheLeProgramme();
-		tortues.get(tourDuJoueur).afficheInventaire();
-		
-		
-	}
-	
-	public void choixMultiple(int tourDuJoueur) {
-		
-		int saisieJoueur;
-		do {
-			
-			System.out.println("Choisissez (1, 2 ou 3)");
-			System.out.println("1 - Completer le programme");
-			System.out.println("2 - Construire un mur");
-			System.out.println("3 - Executer le programme");
-			saisieJoueur = Integer.parseInt(scanner.nextLine());
-			
-		}while (saisieJoueur != 1 && saisieJoueur != 2 && saisieJoueur != 3);
-		
-		switch(saisieJoueur) {
-		case 1:
-			String saisieUtilisateur = "";
-			do {
-				
-				
-				if (tortues.get(tourDuJoueur).getMain().cardsList.size() != 0) {
-					completerProgramme(tourDuJoueur);
-					if (tortues.get(tourDuJoueur).getMain().cardsList.size() != 0) {
-						do {
-							System.out.println("Voulez-vous choisir une autre carte? \n"
-									+ "Entrez \"oui\" ou \"non\"");
-							saisieUtilisateur = scanner.nextLine();
-							}while(!saisieUtilisateur.contentEquals("oui") && !saisieUtilisateur.contentEquals("non"));
-					}
-					
-				}
-				
-				
-				
-			}while (tortues.get(tourDuJoueur).getMain().cardsList.size() != 0 && saisieUtilisateur.contentEquals("oui"));
-			
-			break;
-			
-		case 2:
-			
-			if (tortues.get(tourDuJoueur).getInventaire().get("murDeGlace") == 0 && tortues.get(tourDuJoueur).getInventaire().get("murDePierre") == 0) {
-				System.out.println("plus de mur!");
-				
-			}else {
-				//construireMur(tourDuJoueur);
-			}
-			
-			break;
-			
-		case 3:
-			executerProgramme(tourDuJoueur);
-			break;
-		}
-	}
+
 	
 	
-	public void changementDeMain(int tourDuJoueur) {
-		
-		
-		
+	public static void changementDeMain() {
 		
 		for (Carte carte : tortues.get(tourDuJoueur).getMain().cardsList) {
 			tortues.get(tourDuJoueur).envoyerUneCarteAuCimetiere(carte);				//place toute les cartes de sa main au cimetiere
@@ -341,50 +267,7 @@ public class Game {
 		
 	}
 	
-	public void finDeTour(int tourDuJoueur) {
-		
-		int saisieJoueur;
-		do {
-			
-			
-			System.out.println("1 - garder votre main");
-			System.out.println("2 - en piocher une nouvelle");
-			saisieJoueur = Integer.parseInt(scanner.nextLine());
-			
-		}while (saisieJoueur != 1 && saisieJoueur != 2);
-		
-		switch (saisieJoueur) {
-		case 1:
-			// ne fait rien
-			break;
-			
-		case 2:
-			changementDeMain(tourDuJoueur);
-			break;
-		}
-		
-		afficheLaMainLePlateauEtLeBoard(tourDuJoueur);
-		
-	}
 	
-	public void completerProgramme(int tourDuJoueur) {
-		int saisieJoueur;
-		int i;
-		do {
-			i = 0;
-			System.out.println("Choisissez une carte : ");
-			
-			for (Carte carte : tortues.get(tourDuJoueur).getMain().cardsList) {
-				System.out.println(i + " - " + carte.getType());
-				i++;
-			}
-			saisieJoueur = Integer.parseInt(scanner.nextLine());
-			
-			
-		}while(saisieJoueur < 0 || saisieJoueur > i - 1);
-		
-		tortues.get(tourDuJoueur).invoquerUneCarte(indexToCarteInHand(saisieJoueur, tourDuJoueur)); // invoque une carte sur le programme et le retire de la main
-	}
 	
 	public static void construireMur(int xScreen, int yScreen, char symbole) {
 		
@@ -456,16 +339,21 @@ public class Game {
 			if (isMurValide(x, y)) {
 				if(Plateau.verifierLesChemins(x, y)) {
 					plateau.setPlateau(x, y, symbole);
+					InventairePanel.desactiveLesMurs();
+					Game.etatPartie = EtatPartie.FINDETOUR;
 					switch (symbole) {
 					case 'G':
 						tortues.get(tourDuJoueur).retirerMurDeGlaceInventaire();
-						//update le nombre de murs TODO
 						break;
 						
 					case 'M':
 						tortues.get(tourDuJoueur).retirerMurDePierreInventaire();
 					}
+				}else {
+					// TODO instruction panel "il est interdit de bloquer un joueur ou une position initiale"
 				}
+			}else {
+				// TODO instruction panel "case non dispo"
 			}
 			
 			

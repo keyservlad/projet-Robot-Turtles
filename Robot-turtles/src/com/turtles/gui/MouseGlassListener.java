@@ -97,10 +97,7 @@ public class MouseGlassListener extends MouseAdapter {
 
 		if (composant.getName().contentEquals("MurPanel") || composant.getName().contentEquals("GlacePanel")) {
 
-			// TODO idem
-			/*
-			 * if (Fenetre.isCardMovable(composant) == false) { return; }
-			 */
+			
 
 			composant.show();
 			Point location = (Point) event.getPoint().clone();
@@ -118,8 +115,7 @@ public class MouseGlassListener extends MouseAdapter {
 			
 			Game.construireMur(event.getXOnScreen(), event.getYOnScreen(), symboleMur);
 			Fenetre.getBoardPanel().drawBoard();
-			InventairePanel.desactiveLesMurs();
-			Game.etatPartie = EtatPartie.FINDETOUR;
+			
 
 
 		}
@@ -143,6 +139,11 @@ public class MouseGlassListener extends MouseAdapter {
 			myGlass.setVisible(false);
 
 			int posCarteSelect = Fenetre.posDeLaCarteSelectionnee(composant);
+			
+			if (Game.tortues.get(Game.tourDuJoueur).getProgramme().getCardsList().size() == 5) {
+				// TODO affiche sur le instruction panel
+				return;
+			}
 			
 			if (location.getY() < 800) {
 
@@ -168,7 +169,7 @@ public class MouseGlassListener extends MouseAdapter {
 					j++;
 				}
 
-				Fenetre.getSouthPanel().drawHandProgramme(); // TODO changer le cardsPanel
+				Fenetre.getSouthPanel().drawHandProgramme(); 
 
 				Game.fenetre.ajouterListeners();
 				

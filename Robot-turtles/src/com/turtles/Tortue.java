@@ -6,6 +6,10 @@ public class Tortue {
 	
 	// ajouter les murs egalement
 	
+	
+
+
+
 	private String color; 
 	private int xPos;
 	private int initialxPos;
@@ -25,6 +29,7 @@ public class Tortue {
 	
 	private HashMap<String, Integer> inventaire = new HashMap<String, Integer>();		// on cree une map avec les murs (pierre et glace et plus tard caisse) et le nombre restant dans l'inventaire du joueur
 	
+	private int score = 0;
 	
 	public Tortue() {
 		
@@ -176,6 +181,14 @@ public class Tortue {
 		return this.color;
 	}
 	
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+	
 	public char getSymbol() {
 		return this.symbol;
 	}
@@ -238,28 +251,22 @@ public class Tortue {
 	
 	public void pioche() {
 		
-		ArrayList<Carte> handList = main.getCardsList();
-		ArrayList<Carte> deckList = deck.getCardsList();
+		if (deck.getCardsList().size() == 0) {
+			deck.setCardsList(defausse.getCardsList());
+			deck.melangeLeDeck();
+			defausse.getCardsList().clear();
+		}
 		
-		handList.add(deckList.get(0));
-		main.setCardsList(handList);
+		
+		
+		main.getCardsList().add(deck.getCardsList().get(0));
+		main.setCardsList(main.getCardsList());
 		
 		
 		deck.retirerPremiereCarte();
 	}
 	
-	public void afficheLaMain() {
-		
-		System.out.print("Votre main : ");
-		this.main.afficheLaListe();
-	}
 	
-	
-	public void afficheInventaire() {
-		System.out.print("Votre Inventaire : ");
-		System.out.print("murs de glace : " + this.inventaire.get("murDeGlace") + " - murs de pierre : " + this.inventaire.get("murDePierre") + "\n");
-		
-	}
 	
 	public int nbMurs() {
 		return this.inventaire.get("murDePierre");
@@ -278,7 +285,6 @@ public class Tortue {
 	
 	public void invoquerUneCarte(Carte carte) {
 		
-		// ajouter une condition si le board est full TODO
 		
 		this.programme.ajouterCarte(carte);
 		this.main.retirerUneCarte(carte.getIndex(this.main.getCardsList()));
@@ -479,9 +485,6 @@ public class Tortue {
 	}
 	
 	
-	
-	
-	// fonction deck vide TODO
 	
 
 }

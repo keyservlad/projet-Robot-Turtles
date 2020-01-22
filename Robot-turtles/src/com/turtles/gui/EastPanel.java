@@ -22,8 +22,8 @@ public class EastPanel extends JPanel {
 	private InstructionPanel instructionPanel = new InstructionPanel();
 	private RessourcesPanel ressourcesPanel = new RessourcesPanel();
 	private JPanel middlePanel;
-	private JButton endButton;
-	private Color colorButton;
+	private static JButton endButton;
+	private static Color colorButton;
 
 	public EastPanel() {
 		super(new BorderLayout());
@@ -69,20 +69,20 @@ public class EastPanel extends JPanel {
 
 	}
 
-	public void activerBouton() {
-		this.endButton.setEnabled(true);
+	public static void activerBouton() {
+		endButton.setEnabled(true);
 	}
 
-	public void desactiverBouton() {
-		this.endButton.setBackground(colorButton);
-		this.endButton.setEnabled(false);
+	public static void desactiverBouton() {
+		endButton.setBackground(colorButton);
+		endButton.setEnabled(false);
 	}
 
 	public void couleurNormaleBouton() {
-		this.endButton.setBackground(colorButton);
+		endButton.setBackground(colorButton);
 	}
 
 	public void vouleurVerteBouton() {
-		this.endButton.setBackground(Color.green);
+		endButton.setBackground(Color.green);
 	}
 }

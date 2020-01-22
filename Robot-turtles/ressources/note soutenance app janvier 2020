@@ -1,0 +1,34 @@
+- Introduction
+- presentation (elec et signal) de ce qu'on a fait:
+	- introduction de la pb du cahier des charges
+	- methode de resolution / resultats de simulation
+	- implementation
+	- resultats experimentaux / comparaison avec ce qu'on attendait
+	- demonstration matlab et/ou tiva
+	- conclusion / perspectives
+	
+	
+vision "systeme": comment sont construites les fonctions techniques, décomposition en sous-fonctions, définitions qualitatives et quantitatives des entrées/sorties de ces fonctions
+
+- gestion de projet : planning initial, difficultés rencontrées, planning suivi réel
+- conclusion générale et perspectives
+
+
+Ne pas faire une présentation linéaire des travaux réalisés, ni par ordre chronologique
+Il s’agit de présenter un ensemble cohérent auquel participent les différentes fonctions.
+
+2 fonctionnalités obligatoires à présenter : mesure du rythme cardiaque à partir des signaux ECG (FT1-1-2-1 : Matlab uniquement), reproduction d'une note (FT1-3-2 : Matlab + implémentation)
+
+
+Les objectifs du traitement du signal sont de :
+• Transmettre des informations (télécommunications),
+• Améliorer la qualité d’un signal,
+• Compresser, coder les signaux,
+• Interpréter, reconnaître, prédire….
+
+
+cahier des charges:
+- FT1-1-1-2 (confort) (elec) temps de réaction à une lumière inattendue dans le noir
+- FT1-1-2-1 (indisp) (elec et signal) mesurer le niveau de stress - frequence cardiaque - freq cardiaques comprises entre 40 bpm et 140 bpm
+- FT1-1-2-3 (indisp) (elec) température de la peau - capacité à mesurer une temlpérature comprise entre 20 et 40 degres
+- FT1-1-3-2 (indisp) (elec et signal)
