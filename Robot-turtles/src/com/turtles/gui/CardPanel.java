@@ -16,46 +16,46 @@ import javax.swing.JPanel;
 import com.turtles.Carte;
 import com.turtles.Game;
 
-public class CardPanel extends JPanel{
-	
+public class CardPanel extends JPanel {
+
 	public static final Dimension CARD_PANEL_DIMENSION = new Dimension(100, 135);
 	private final int posCard;
 	private String type;
 	private boolean isMovable = true;
 	private boolean isVisible = true;
-	
+
 	private final String BlueCardIconPath = "./ressources/images/cards/BlueCard.png";
 	private final String LaserIconPath = "./ressources/images/cards/LaserCard.png";
 	private final String PurpleCardIconPath = "./ressources/images/cards/PurpleCard.png";
 	private final String YellowCardIconPath = "./ressources/images/cards/YellowCard.png";
-	
+
 	private final String LegendCardBack = "./ressources/images/cards/legendCardBack.png";
-	
+
 	private int X, Y, initialX, initialY;
-	
+
 	private MouseGlassListener ml;
 	private MouseGlassMotionListener mml;
-	
-	CardPanel(final int posCard, int tourDuJoueur, boolean isVisible, String panel){
-		
+
+	CardPanel(final int posCard, int tourDuJoueur, boolean isVisible, String panel) {
+
 		super(new GridBagLayout());
-		
+
 		this.posCard = posCard;
 		this.isVisible = isVisible;
-		
+
 		setPreferredSize(CARD_PANEL_DIMENSION);
-		setBackground(new Color(1.0f, 1.0f, 1.0f ,0.0f));
-		if (this.isVisible == false){
+		setBackground(new Color(1.0f, 1.0f, 1.0f, 0.0f));
+		if (this.isVisible == false) {
 			assignImage();
-		}else {
+		} else {
 			if (panel.contentEquals("Hand")) {
 				assignImage(Game.tortues.get(tourDuJoueur).getMain().getCardsList().get(posCard));
-			}else {
+			} else {
 				assignImage(Game.tortues.get(tourDuJoueur).getProgramme().getCardsList().get(posCard));
 			}
-			
+
 		}
-		
+
 		this.setName("CardPanel");
 		validate();
 	}
@@ -64,59 +64,48 @@ public class CardPanel extends JPanel{
 		this.removeAll();
 		try {
 			add(new JLabel(new ImageIcon(ImageIO.read(new File(LegendCardBack)))));
-			
+
 		} catch (IOException e) {
-			
+
 			e.printStackTrace();
 		}
-		
-		
-		
+
 	}
 
 	public void assignImage(Carte carte) {
 		this.removeAll();
-		
-		
-		
-		
+
 		try {
 			BufferedImage image = null;
-			
+
 			if (carte.getType().contentEquals("Bleue")) {
 				image = ImageIO.read(new File(BlueCardIconPath));
 				this.setType("Bleue");
-			}else if(carte.getType().contentEquals("Jaune")) {
+			} else if (carte.getType().contentEquals("Jaune")) {
 				image = ImageIO.read(new File(YellowCardIconPath));
 				this.setType("Jaune");
-			}else if(carte.getType().contentEquals("Violette")) {
+			} else if (carte.getType().contentEquals("Violette")) {
 				image = ImageIO.read(new File(PurpleCardIconPath));
 				this.setType("Violette");
-			}else if (carte.getType().contentEquals("Laser")) {
+			} else if (carte.getType().contentEquals("Laser")) {
 				image = ImageIO.read(new File(LaserIconPath));
 				this.setType("Laser");
-			}else {
+			} else {
 				System.out.println("erreur");
 			}
-				
-				
-				
-			
+
 			add(new JLabel(new ImageIcon(image)));
-			
-			
-			
-			
-		} catch(IOException e) {
+
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	public String getType() {
 		return type;
 	}
-	
+
 	public int getPosCard() {
 		return this.posCard;
 	}
@@ -124,44 +113,42 @@ public class CardPanel extends JPanel{
 	public void setType(String type) {
 		this.type = type;
 	}
-	
+
 	public int getInitialX() {
 		return this.initialX;
 	}
-	
+
 	public int getInitialY() {
 		return this.initialY;
 	}
-	
+
 	public boolean getIsMovable() {
 		return this.isMovable;
 	}
-	
+
 	public void setIsMovable(boolean isMovable) {
 		this.isMovable = isMovable;
 	}
-	
+
 	public boolean getIsVisible() {
 		return this.isVisible;
 	}
-	
+
 	public void setIsVisible(boolean isVisible) {
 		this.isVisible = isVisible;
 	}
-	
+
 	public void removeMouseListeners() {
 		this.removeMouseListener(ml);
 		this.removeMouseMotionListener(mml);
 	}
-	
+
 	public void addMouseListeners() {
 		this.ml = new MouseGlassListener(Fenetre.glass);
 		this.mml = new MouseGlassMotionListener(Fenetre.glass);
-		
+
 		this.addMouseListener(this.ml);
 		this.addMouseMotionListener(this.mml);
 	}
-	
-	
 
 }

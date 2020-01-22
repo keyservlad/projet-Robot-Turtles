@@ -10,19 +10,19 @@ public class SouthPanel extends JPanel {
 
 	public static HandPanel handPanel;
 	public ProgrammePanel programmePanel;
-	
+
 	private static final Dimension SOUTH_PANEL_DIMENSION = new Dimension(450, 315);
 
 	SouthPanel() {
 		super(new BorderLayout(0, 4));
-		setBackground(new Color(1.0f, 1.0f, 1.0f, 0.5f));
+		setBackground(new Color(1.0f, 1.0f, 1.0f, 0.f));
 
 		handPanel = new HandPanel(this);
 		programmePanel = new ProgrammePanel();
 
 		add(handPanel, BorderLayout.SOUTH);
 		add(programmePanel, BorderLayout.NORTH);
-		
+
 		setPreferredSize(SOUTH_PANEL_DIMENSION);
 
 		validate();
@@ -30,16 +30,14 @@ public class SouthPanel extends JPanel {
 	}
 
 	public void drawHandProgramme() {
-		
+
 		handPanel.drawCards();
 		programmePanel.drawCards();
 
 	}
-	
+
 	public ProgrammePanel getProgrammePanel() {
 		return this.programmePanel;
 	}
-	
-	
 
 }

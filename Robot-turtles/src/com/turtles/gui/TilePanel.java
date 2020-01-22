@@ -200,8 +200,8 @@ public class TilePanel extends JPanel {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}else {
-			// TODO case initiale 
+		} else {
+			// TODO case initiale
 		}
 
 	}

@@ -1,5 +1,7 @@
 package com.turtles.gui;
 
+
+// enumeration des differents etats de la partie
 public enum EtatPartie {
 	
 	DEBUTPARTIE,
@@ -9,7 +11,8 @@ public enum EtatPartie {
 	CONSTRUIRE,
 	EXECUTER,
 	FINDETOUR,
-	FINPARTIE;
+	FINPARTIE,
+	FINDUJEU;
 	
 	
 	

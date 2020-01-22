@@ -5,15 +5,12 @@ public class Plateau {
 	public static char[][] plateau = new char[8][8];
 
 	// notre plateau pour tester si un chemin est possible apres le, placement
-												// d'un mur
-	
+	// d'un mur
+
 	private static int[][] plateauTest = new int[10][10];
 
 	/**
-	 * les valeurs sont : 
-	 * 0 : case non visitée 
-	 * 1 : mur (ou bordure) 
-	 * 2 : case visitée
+	 * les valeurs sont : 0 : case non visitée 1 : mur (ou bordure) 2 : case visitée
 	 * 9 : case visée
 	 */
 
@@ -37,7 +34,7 @@ public class Plateau {
 	}
 
 	public void setPlateau(int x, int y, char symbole) {
-		this.plateau[y][x] = symbole;
+		plateau[y][x] = symbole;
 	}
 
 	public void afficherPlateau() {
@@ -60,7 +57,9 @@ public class Plateau {
 		viderPlateau();
 
 		for (Tortue tortue : Game.tortues) {
-			plateau[tortue.getyPos()][tortue.getxPos()] = tortue.getSymbol();
+			if (tortue.isaFini() == false) {
+				plateau[tortue.getyPos()][tortue.getxPos()] = tortue.getSymbol();
+			}
 		}
 
 		afficherPlateau();
@@ -77,15 +76,19 @@ public class Plateau {
 		}
 	}
 
-	public boolean deplacementValide(char direction, int xPos, int yPos, String color) {
+	// verifie pour chaque direction du joueur la case vers laquel le joueur va
+	// c'est ici qu'on va également gerer les collisions
+	public boolean deplacementValide(char direction, int xPos, int yPos) {
 		switch (direction) {
 		case 'S':
-			if (yPos + 1 > 7) {
+			if (yPos + 1 > 7 || plateau[yPos + 1][xPos] == 'M' || plateau[yPos + 1][xPos] == 'G') {
+				Game.tortues.get(Game.tourDuJoueur).demiTour();
 				return false;
 			}
-			if (this.plateau[yPos + 1][xPos] == 'X') {
-				Game.victoire(color);
-			} else if ((this.plateau[yPos + 1][xPos] == 'R') || (this.plateau[yPos + 1][xPos] == 'V') || (this.plateau[yPos + 1][xPos] == 'B') || (this.plateau[yPos + 1][xPos] == 'J')) {
+			if (plateau[yPos + 1][xPos] == 'X') {
+				Game.victoire();
+			} else if ((plateau[yPos + 1][xPos] == 'R') || (plateau[yPos + 1][xPos] == 'V')
+					|| (plateau[yPos + 1][xPos] == 'B') || (plateau[yPos + 1][xPos] == 'J')) {
 				for (Tortue tortue : Game.tortues) {
 					if (tortue.getSymbol() == plateau[yPos + 1][xPos]) {
 						Game.resetTortue(tortue);
@@ -95,19 +98,21 @@ public class Plateau {
 					}
 				}
 				return false;
-			}else if ((this.plateau[yPos + 1][xPos] != ' ')) {
+			} else if ((plateau[yPos + 1][xPos] != ' ')) {
 				return false;
 			}
 
 			break;
 
 		case 'N':
-			if (yPos - 1 < 0) {
+			if (yPos - 1 < 0 || plateau[yPos - 1][xPos] == 'G' || plateau[yPos - 1][xPos] == 'M') {
+				Game.tortues.get(Game.tourDuJoueur).demiTour();
 				return false;
 			}
-			if (this.plateau[yPos - 1][xPos] == 'X') {
-				Game.victoire(color);
-			} else if ((this.plateau[yPos - 1][xPos] == 'R') || (this.plateau[yPos - 1][xPos] == 'V') || (this.plateau[yPos - 1][xPos] == 'B') || (this.plateau[yPos - 1][xPos] == 'J')) {
+			if (plateau[yPos - 1][xPos] == 'X') {
+				Game.victoire();
+			} else if ((plateau[yPos - 1][xPos] == 'R') || (plateau[yPos - 1][xPos] == 'V')
+					|| (plateau[yPos - 1][xPos] == 'B') || (plateau[yPos - 1][xPos] == 'J')) {
 				for (Tortue tortue : Game.tortues) {
 					if (tortue.getSymbol() == plateau[yPos - 1][xPos]) {
 						Game.resetTortue(tortue);
@@ -117,19 +122,21 @@ public class Plateau {
 					}
 				}
 				return false;
-			}else if(this.plateau[yPos - 1][xPos] != ' ') {
+			} else if (plateau[yPos - 1][xPos] != ' ') {
 				return false;
 			}
 
 			break;
 
 		case 'E':
-			if (xPos > 7) {
+			if (xPos > 7 || plateau[yPos][xPos + 1] == 'M' || plateau[yPos][xPos + 1] == 'G') {
+				Game.tortues.get(Game.tourDuJoueur).demiTour();
 				return false;
 			}
-			if (this.plateau[yPos][xPos + 1] == 'X') {
-				Game.victoire(color);
-			} else if ((this.plateau[yPos][xPos + 1] == 'R') || (this.plateau[yPos][xPos + 1] == 'V') || (this.plateau[yPos][xPos + 1] == 'B') || (this.plateau[yPos][xPos + 1] == 'J')) {
+			if (plateau[yPos][xPos + 1] == 'X') {
+				Game.victoire();
+			} else if ((plateau[yPos][xPos + 1] == 'R') || (plateau[yPos][xPos + 1] == 'V')
+					|| (plateau[yPos][xPos + 1] == 'B') || (plateau[yPos][xPos + 1] == 'J')) {
 				for (Tortue tortue : Game.tortues) {
 					if (tortue.getSymbol() == plateau[yPos][xPos + 1]) {
 						Game.resetTortue(tortue);
@@ -139,19 +146,21 @@ public class Plateau {
 					}
 				}
 				return false;
-			}else if (this.plateau[yPos][xPos + 1] != ' ') {
+			} else if (plateau[yPos][xPos + 1] != ' ') {
 				return false;
 			}
 
 			break;
 
 		case 'W':
-			if (xPos - 1 < 0) {
+			if (xPos - 1 < 0 || plateau[yPos][xPos - 1] == 'G' || plateau[yPos][xPos - 1] == 'M') {
+				Game.tortues.get(Game.tourDuJoueur).demiTour();
 				return false;
 			}
-			if (this.plateau[yPos][xPos - 1] == 'X') {
-				Game.victoire(color);
-			} else if ( (this.plateau[yPos][xPos - 1] == 'R') || (this.plateau[yPos][xPos - 1] == 'V') || (this.plateau[yPos][xPos - 1] == 'B') || (this.plateau[yPos][xPos - 1] == 'J')) {
+			if (plateau[yPos][xPos - 1] == 'X') {
+				Game.victoire();
+			} else if ((plateau[yPos][xPos - 1] == 'R') || (plateau[yPos][xPos - 1] == 'V')
+					|| (plateau[yPos][xPos - 1] == 'B') || (plateau[yPos][xPos - 1] == 'J')) {
 				for (Tortue tortue : Game.tortues) {
 					if (tortue.getSymbol() == plateau[yPos][xPos - 1]) {
 						Game.resetTortue(tortue);
@@ -161,7 +170,7 @@ public class Plateau {
 					}
 				}
 				return false;
-			}else if (this.plateau[yPos][xPos - 1] != ' ') {
+			} else if (plateau[yPos][xPos - 1] != ' ') {
 				return false;
 			}
 
@@ -172,33 +181,34 @@ public class Plateau {
 		return true;
 	}
 
+	// fais fondre un mur de glace si le laser atteint un mur glace
 	public void melt(int y, int x) {
-		this.plateau[y][x] = ' ';
+		plateau[y][x] = ' ';
 		this.updatePlateau();
 	}
 
 	public char getUneCase(int x, int y) {
-		return this.plateau[y][x];
+		return plateau[y][x];
 	}
-	
+
 	public static void reinitialiserPlateauTest() {
-		
+
 		for (int i = 0; i < 10; i++) {
-			for(int j = 0; j < 10; j++) {
+			for (int j = 0; j < 10; j++) {
 				plateauTest[i][j] = 0;
 			}
 		}
-		
-		
+
 		for (int i = 0; i < 10; i++) {
 			plateauTest[i][0] = 1;
 			plateauTest[0][i] = 1;
 			plateauTest[i][9] = 1;
 			plateauTest[9][i] = 1;
 		}
-		
+
 	}
-	
+
+	// fonction utilisé uniquement pour tester le Pathfinding
 	public static void affichePlateauTest() {
 		System.out.println("");
 
@@ -214,53 +224,53 @@ public class Plateau {
 	}
 
 	public static void creerPlateauTest() {
-		
+
 		reinitialiserPlateauTest();
-		
+
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
 				if (plateau[i][j] == 'M') {
 					plateauTest[i + 1][j + 1] = 1;
 				} else if (plateau[i][j] == 'G') {
-					plateauTest[i + 1][j + 1] = 1; 
-				}else if (plateau[i][j] == 'X') {
+					plateauTest[i + 1][j + 1] = 1;
+				} else if (plateau[i][j] == 'X') {
 					plateauTest[i + 1][j + 1] = 9;
 				}
 
 			}
 		}
-		
-		//affichePlateauTest();
-		
+
+		// affichePlateauTest();
 
 	}
 
 	// il faut tester à chaque fois qu'on pose un mur que tous les joueurs peuvent
 	// aller sur un joyau et que toutes les pos initiales puissent aller un joyau
 	public static boolean verifierLesChemins(int xMur, int yMur) {
-		
+
 		for (Tortue tortue : Game.tortues) {
-			
+
 			creerPlateauTest();
 			plateauTest[yMur + 1][xMur + 1] = 1;
-			
-			if (PathFinder.isThereAPath(plateauTest, tortue.getInitialxPos() + 1, tortue.getInitialyPos() + 1) == false) {
+
+			if (PathFinder.isThereAPath(plateauTest, tortue.getInitialxPos() + 1,
+					tortue.getInitialyPos() + 1) == false) {
+				// TODO ecrire dans le instruction panel que le mur ne peut pas etre pose ici
 				System.out.println("position initiale de " + tortue.getColor() + " ne peut atteindre aucun joyau");
 				return false;
 			}
-			
+
 			creerPlateauTest();
 			plateauTest[yMur + 1][xMur + 1] = 1;
-			
+
 			if (PathFinder.isThereAPath(plateauTest, tortue.getxPos() + 1, tortue.getyPos() + 1) == false) {
 				System.out.println("position de " + tortue.getColor() + " ne peut atteindre aucun joyau");
 				return false;
 			}
-			
 
 		}
-		
-		System.out.println("chemins bons");
+
+		// System.out.println("chemins bons");
 		return true;
 
 	}

@@ -7,7 +7,6 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.SwingUtilities;
 
-//CTRL + SHIFT + O pour générer les imports
 public class MouseGlassMotionListener extends MouseAdapter {
 
 	private MyGlassPane myGlass;
@@ -21,7 +20,6 @@ public class MouseGlassMotionListener extends MouseAdapter {
 	 * fois sur l'action de déplacement
 	 */
 	public void mouseDragged(MouseEvent event) {
-		// Vous connaissez maintenant…
 		Component c = event.getComponent();
 
 		Point p = (Point) event.getPoint().clone();

@@ -7,17 +7,13 @@ public class PathFinder {
 
 		// on regarde si la position finale a été atteinte
 		if (plateauTest[Ytested][Xtested] == 9) {
-			//System.out.println("chemin trouve");
+			// System.out.println("chemin trouve");
 			return true;
 		}
-		
-		
+
 		if (plateauTest[Ytested][Xtested] == 0) {
 			plateauTest[Ytested][Xtested] = 2; // on note la position cherchée comme testée
-			
-			
-			
-			
+
 			// on recherche maintenant dans les voisins de maniere recursive
 
 			int dx = -1;
@@ -49,7 +45,7 @@ public class PathFinder {
 			}
 
 		}
-		
+
 		return false;
 	}
 

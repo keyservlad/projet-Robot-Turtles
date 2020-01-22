@@ -14,9 +14,6 @@ import javax.swing.JPanel;
 import com.turtles.Game;
 
 public class EastPanel extends JPanel {
-
-	private ArrayList<JButton> listeBoutons = new ArrayList<>();
-
 	private static final Dimension EAST_PANEL_DIMENSION = new Dimension(735, 450);
 
 	private InstructionPanel instructionPanel = new InstructionPanel();
@@ -27,7 +24,7 @@ public class EastPanel extends JPanel {
 
 	public EastPanel() {
 		super(new BorderLayout());
-		setBackground(new Color(1.0f, 1.0f, 1.0f, 0.5f));
+		setBackground(new Color(1.0f, 1.0f, 1.0f, 0.f));
 		setPreferredSize(EAST_PANEL_DIMENSION);
 
 		middlePanel = new JPanel();
@@ -48,7 +45,7 @@ public class EastPanel extends JPanel {
 		// this.desactiverBouton();
 
 		endButton.setPreferredSize(new Dimension(100, 30));
-		
+
 		this.middlePanel.setBackground(new Color(1.0f, 1.0f, 1.0f, 0.f));
 		this.middlePanel.add(endButton);
 
